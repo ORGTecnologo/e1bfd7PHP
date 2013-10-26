@@ -13,7 +13,12 @@
 		public function getFormRegistro() {
 			$this->registry->template->show('registro_usuario');
 		}
-
+		
+		public function getFormLogin() {
+			$this->registry->template->show('login_usuario');
+		}
+	
+	
 	}
 
 ?>

@@ -6,3 +6,13 @@
 	min-height: 600px;
 	background-color: #C9C9C9;
 }
+
+html, body, #map-canvas {
+	height: 100%;
+	margin: 0px;
+	padding: 0px
+}
+
+.alignCenter {
+	text-align : center;
+}

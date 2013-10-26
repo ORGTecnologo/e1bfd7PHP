@@ -1,29 +1,6 @@
 
-
-<!--
-	<div class="row-fluid">
-		<div class="span10"></div>
-		<div class="span4">
-			
-			<div class="span12">
-				Usuario
-				<input type="text" class="form-control" placeholder="Username">
-			</div>
-			<div class="span12">
-				Contraseña
-				<input type="text" class="form-control" placeholder="Username">   
-			</div>
-			<div class="span12">
-				Confirmacion
-				<input type="text" class="form-control" placeholder="Username">
-			</div>
-			
-		</div>
-		<div class="span5">
-		</div>
-	</div>-->
 <div class="row-fluid">
-	<div class="span10"/>
+	<div class="span12"/>
 </div>
 <div class="row-fluid">
 	<div class="span6">
@@ -33,19 +10,19 @@
 		<div class="row-fluid">
 			<div class="span6 offset2">
 				Usuario
-				<input type="text" class="form-control" placeholder="">
+				<input id="campoUsuario" type="text" class="form-control" placeholder="">
 			</div>
 		</div>
 		<div class="row-fluid">
 			<div class="span6 offset2">
 				Contraseña
-				<input type="text" class="form-control" placeholder="">
+				<input id="campoContrasenia1" type="password" class="form-control" placeholder="">
 			</div>
 		</div>
 		<div class="row-fluid">
 			<div class="span6 offset2">
 				Confirmacion
-				<input type="text" class="form-control" placeholder="">
+				<input id="campoContrasenia2" type="password" class="form-control" placeholder="">
 			</div>
 		</div>
 	</div>
@@ -56,20 +33,37 @@
 		<div class="row-fluid">
 			<div class="span6 offset2">
 				Nombre
-				<input type="text" class="form-control" placeholder="">
+				<input id="campoNombre" type="text" class="form-control" placeholder="">
 			</div>
 		</div>
 		<div class="row-fluid">
 			<div class="span6 offset2">
 				Apellido
-				<input type="text" class="form-control" placeholder="">
+				<input id="campoApellido" type="text" class="form-control" placeholder="">
 			</div>
 		</div>
 		<div class="row-fluid">
 			<div class="span6 offset2">
 				Fecha de nacimiento
-				<input type="text" class="form-control" placeholder="">
+				<input id="campoFechaNacimiento" type="text" class="form-control span12" value="02-16-2012" id="dp1">
 			</div>
 		</div>
+		<div class="row-fluid">
+			<div class="span6 offset2">
+				Soy un usuario
+				<select id="campoTipoUsuario" class="selectpicker">
+					<option>Tecnico</option>
+					<option>Cliente</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span12"/>
+</div>
+<div class="row-fluid">
+	<div class="span6 offset1">
+		<button class="btn span6" onclick="registrarUsuario()">Enviar</button>
 	</div>
 </div>

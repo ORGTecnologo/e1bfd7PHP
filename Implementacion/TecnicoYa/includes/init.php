@@ -16,7 +16,6 @@
 
 	/*** auto load model classes ***/
     function __autoload($class_name) {
-		var_dump('checkpoint' + $class_name);
 		$filename = strtolower($class_name) . '.class.php';
 		$file = __SITE_PATH . '/model/' . $filename;
 

@@ -6,6 +6,8 @@
 		* @the registry
 		*/
 		private $registry;
+				
+		private $servicesParams;
 
 		/*
 		* @the controller path
@@ -78,7 +80,11 @@
 			}
 
 			/*** Get action ***/
-			if (empty($this->action))
+			if ( strcmp($this->controller,'services') == 0 )
+			{
+				$this->action = 'processRequest';
+			}
+			else if (empty($this->action))
 			{
 					$this->action = 'index';
 			}
@@ -114,14 +120,14 @@
 			/*** a new controller class instance ***/
 			$class = $this->controller . 'Controller';
 			$controller = new $class($this->registry);
-
+				
 			/*** check if the action is callable ***/
 			if (is_callable(array($controller, $this->action)) == false)
 			{
 				$action = 'index';
 			}
 			else
-			{
+			{			
 				$action = $this->action;
 			}
 			/*** run the action ***/

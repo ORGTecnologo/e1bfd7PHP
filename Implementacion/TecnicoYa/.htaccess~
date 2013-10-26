@@ -4,4 +4,4 @@ RewriteEngine on
  
 # Request routing
 # index.php?method=$1&format=$2 [nc,qsa]
-RewriteRule ^([a-zA-Z_-]*)\.(html|json|xml)?$ index.php?method=$1&format=$2 [nc,qsa]
+RewriteRule ^([a-zA-Z_-]*)\.(html|json|xml)?$   
