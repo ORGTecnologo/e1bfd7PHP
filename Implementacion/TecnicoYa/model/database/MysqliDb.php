@@ -471,5 +471,32 @@ class MysqliDb
         }
         return $arr;
     }
-
+	
+	
+	
+	/*
+	 * 
+	 *  CUSTOM QUERIES
+	 * 
+	 * */
+	
+	public function findByUser($user)
+    {
+		$statement = $this->_mysqli->prepare("SELECT usuario,contrasenia FROM tbl_usuarios WHERE usuario = ?");
+		if($statement === false) 
+			{ trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR); }
+		$statement->bind_param('s', $user);
+		$statement->execute();			
+		$result = $statement->get_result();
+		while ($row = $result->fetch_array(MYSQLI_NUM))
+        {            
+            return $row;
+        }
+		return false;
+    }
+	
+	
+	
+	
+	
 } // END class

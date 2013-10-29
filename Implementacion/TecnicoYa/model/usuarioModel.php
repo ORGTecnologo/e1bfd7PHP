@@ -20,29 +20,34 @@
 			if (empty($tipo))
 				array_push($respuesta, 'tipo_required');
 			if (strcmp($pass2 , $pass2) != 0)
-				array_push($respuesta, 'pass_confirm_fail');
+				array_push($respuesta, 'pass_confirm_fail');	
+						
+			require_once('database/MysqliDb.php');
+			$db = new MysqliDb('localhost', 'root', 'ms_admin', 'tecnico_ya_database');
+			$checkUser = $db->findByUser($usr);
+			if ($checkUser !== false){
+				array_push($respuesta, 'usr_already_exists');
+			}
 				
-			if (empty($respuesta)) {
-				require_once('database/MysqliDb.php');
-
-				$db = new MysqliDb('localhost', 'root', 'root', 'tecnico_ya_database');
+			if (empty($respuesta)) {				
+				
+				$pass1 = md5($pass1);
 				$insertData = array('usuario'    => $usr,'nombres' => $nombre,'apellidos'  => $apellido,'contrasenia'  => $pass1);
-				$results = $db->insert('tbl_usuarios', $insertData);
+				$id_insertado = $db->insert('tbl_usuarios', $insertData);
+				/*
 				if (strcmp($tipo,'Cliente') == 0){
 					$insertData = array('usuario'    => $usr,'direccion' => '','habilitado'  => true);
 					$results = $db->insert('tbl_clientes', $insertData);
 				} else {
 					$insertData = array('usuario'    => $usr,'habilitado' => true);
-					$results = $db->insert('tbl_tenicos', $insertData);
+					$results = $db->insert('tbl_tecnicos', $insertData);
 				}		
+				*/			
 				
-				$results = $db->get('tbl_usuarios');
-				print_r($results);					
-				
-				if (results == false)
-					array_push($respuesta, 'FALLA');
-				else 
+				if ($id_insertado !== false)
 					array_push($respuesta, 'OK');
+				else 
+					array_push($respuesta, 'FALLA');
 			} else {
 				array_push($respuesta, 'FALLA');
 			}
