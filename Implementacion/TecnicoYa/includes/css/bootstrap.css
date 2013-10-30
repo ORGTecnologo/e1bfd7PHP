@@ -5993,11 +5993,12 @@ body.modal-open,
 }
 
 .carousel {
-  position: relative;
+  position: absolute;
+  z-index: 1000;
 }
 
 .carousel-inner {
-  position: relative;
+  position: absolute;
   width: 100%;
   overflow: hidden;
 }
