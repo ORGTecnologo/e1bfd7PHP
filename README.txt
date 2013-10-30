@@ -1,5 +1,6 @@
-
 ##### Readme sobre proyecto php #####
+
+El sitio se encuentra publicado en http://orgtecnologo.github.io/e1bfd7PHP
 
 Estructura de directorios
 #####################################################################################
