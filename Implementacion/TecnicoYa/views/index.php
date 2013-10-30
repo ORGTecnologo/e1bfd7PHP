@@ -117,7 +117,7 @@
 	<div class="row">
 		<div id="aplicacion1"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu1.jpg" alt="includes/img/mu1.jpg" class="img-circle">
+				<img src="includes/img/el1.jpg" alt="includes/img/el1.jpg" class="img-circle">
 				<div class="caption">
 					<h3>Electricista 4</h3>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -132,7 +132,7 @@
 	  
 		<div id="aplicacion2"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu2.jpg" alt="includes/img/mu2.jpg" class="img-circle">
+				<img src="includes/img/el2.jpeg" alt="includes/img/el2.jpeg" class="img-circle">
 				<div class="caption">
 					<h3>Electricista 3</h3>
 					<p>Descripcion</p>
@@ -147,7 +147,7 @@
 
 		<div id="aplicacion3"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu3.jpg" alt="includes/img/mu3.jpg" class="img-circle">
+				<img src="includes/img/el3.jpg" alt="includes/img/el3.jpg" class="img-circle">
 				<div class="caption">
 					<h3>Electricista 2</h3>
 					<p>Descripcion</p>
@@ -162,7 +162,7 @@
 
 		<div id="aplicacion4" class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu4.jpg" alt="includes/img/mu4.jpg" class="img-circle">
+				<img src="includes/img/el4.jpg" alt="includes/img/el4.jpg" class="img-circle">
 				<div class="caption">
 					<h3>Electricista 1</h3>
 					<p>Descripcion</p>
@@ -187,7 +187,7 @@
 	<div class="row">
 		<div id="libro1"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/li1.jpg" alt="includes/img/mu1.jpg" class="img-circle">
+				<img src="includes/img/san1.jpg" alt="includes/img/san1.jpg" class="img-circle">
 				<div class="caption">
 					<h3>Sanitario 1</h3>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -202,7 +202,7 @@
 		
 		<div id="libro2"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/li2.jpg" alt="includes/img/mu2.jpg" class="img-circle">
+				<img src="includes/img/san2.jpg" alt="includes/img/san2.jpg" class="img-circle">
 				<div class="caption">
 					<h3>Sanitario 1</h3>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -217,7 +217,7 @@
 		
 		<div id="libro3"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/li3.jpg" alt="includes/img/mu3.jpg" class="img-circle">
+				<img src="includes/img/san3.jpg" alt="includes/img/san3.jpg" class="img-circle">
 				<div class="caption">
 					<h3>Sanitario 1</h3>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -232,7 +232,7 @@
 		
 		<div id="libro4"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/li4.png" alt="includes/img/mu4.jpg" class="img-circle">
+				<img src="includes/img/san4.jpg" alt="includes/img/san4.jpg" class="img-circle">
 				<div class="caption">
 					<h3>Sanitario 1</h3>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -256,7 +256,7 @@
 	<div class="row">
 		<div id="Tecnico PC1"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu1.jpg" alt="includes/img/mu1.jpg" class="img-circle">
+				<img src="includes/img/tpc4.jpg" alt="includes/img/tpc4.jpg" class="img-circle">
 				<div class="caption">
 					<h2>Tecnico PC 1</h2>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -271,7 +271,7 @@
 		
 		<div id="Tecnico PC2"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu1.jpg" alt="includes/img/mu1.jpg" class="img-circle">
+				<img src="includes/img/tpc1.jpg" alt="includes/img/tpc1.jpg" class="img-circle">
 				<div class="caption">
 					<h2>Tecnico PC 2</h2>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -286,7 +286,7 @@
 		
 		<div id="Tecnico PC3"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu1.jpg" alt="includes/img/mu1.jpg" class="img-circle">
+				<img src="includes/img/tpc2.jpg" alt="includes/img/tpc2.jpg" class="img-circle">
 				<div class="caption">
 					<h2>Tecnico PC 3</h2>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -301,7 +301,7 @@
 		
 		<div id="Tecnico PC4"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu1.jpg" alt="includes/img/mu1.jpg" class="img-circle">
+				<img src="includes/img/tpc3.jpg" alt="includes/img/tpc3.jpg" class="img-circle">
 				<div class="caption">
 					<h2>Tecnico PC 4</h2>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -324,7 +324,7 @@
 	<div class="row">
 		<div id="Jardinero1"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu1.jpg" alt="includes/img/mu1.jpg" class="img-circle">
+				<img src="includes/img/ja1.jpg" alt="includes/img/ja1.jpg" class="img-circle">
 				<div class="caption">
 					<h2>Jardinero 1</h2>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -339,7 +339,7 @@
 		
 		<div id="Jardinero2"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu2.jpg" alt="includes/img/mu2.jpg" class="img-circle">
+				<img src="includes/img/ja2.jpg" alt="includes/img/ja2.jpg" class="img-circle">
 				<div class="caption">
 					<h2>Jardinero 2</h2>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -354,7 +354,7 @@
 		
 		<div id="Jardinero3"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu3.jpg" alt="includes/img/mu3.jpg" class="img-circle">
+				<img src="includes/img/ja3.jpg" alt="includes/img/ja3.jpg" class="img-circle">
 				<div class="caption">
 					<h2>Jardinero 3</h2>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
@@ -369,7 +369,7 @@
 		
 		<div id="Jardinero4"  class="col-sm-5 col-md-3">
 			<div class="thumbnail">
-				<img src="includes/img/mu4.jpg" alt="includes/img/mu4.jpg" class="img-circle">
+				<img src="includes/img/ja4.jpg" alt="includes/img/ja4.jpg" class="img-circle">
 				<div class="caption">
 					<h2>Jardinero 4</h2>
 					<p>Laslasdkamskldn dkla sjdklasd aklsjdkl ajskldjaskl djklasjd</p>
