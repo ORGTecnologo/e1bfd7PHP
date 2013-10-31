@@ -31,18 +31,6 @@ function validateEmail($email) {
 		return true;
 }
 
-
-function clickRegistroUsuario(){
-	var div = $("#registroUsuario");
-	div.show();
-}
-
-function clickAltaServicio(){
-	var div = $("#div_altaServicio");
-	div.show();
-}
-
-
 function Pintar_hasError(input){
 
 	if (input.value == ""){
@@ -63,8 +51,10 @@ function errorControlVaciosFormularioRegistro() {
 	var error5 = Pintar_hasError(document.getElementById('inputSexo'));
 	var error6 = Pintar_hasError(document.getElementById('inputFecha'));
 	var error7 = Pintar_hasError(document.getElementById('inputTel'));
-	
-	if(error0 || error1 || error2 || error3 || error4 || error5 || error6 || error7){
+	var error8 = Pintar_hasError(document.getElementById('inputCi'));
+	var error9 = Pintar_hasError(document.getElementById('inputDireccion'));	
+
+	if(error0 || error1 || error2 || error3 || error4 || error5 || error6 || error7 || error8 || error9){
 		alert('Ha dejado campos sin completar!!!');
 		return true;
 	}
@@ -85,10 +75,13 @@ function crearUsuario(){
 		var sexo 		= document.getElementById('inputSexo').value;
 		var nacimiento  = document.getElementById('inputFecha').value;
 		var cel 		= document.getElementById('inputTel').value;
-		
+		var ci 			= document.getElementById('inputTel').value;
+		var direccion	= document.getElementById('inputDireccion').value;		
+
+
 		if(validateEmail(mail)){
 			//if continuar validando
-			registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimiento,cel);
+			registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimiento,cel,ci,direccion);
 		}
 		else{
 			var email = document.getElementById('inputCorreo');
@@ -106,6 +99,25 @@ function IniciarSesion(){
 	loginUsuario(correo,pass);
 }
 
+function AltaServicio(){
+	
+	var nombre 	= document.getElementById('alta_serv_nombre').value;
+	var descripcion = document.getElementById('alta_serv_desc').value;
+	
+	loginUsuario(correo,pass);
+}
+//--------------------------------------------------------------------------
+//Control de divs
+
+function clickRegistroUsuario(){
+	var div = $("#registroUsuario");
+	div.show();
+}
+
+function clickAltaServicio(){
+	var div = $("#div_altaServicio");
+	div.show();
+}
 
 function clickLogin(){
 	var div = $("#loginUsuario");
@@ -119,5 +131,10 @@ function cerrarPanelRegistro(){
 
 function cerrarPanelLogin(){
 	var div = $("#loginUsuario");
+	div.hide();
+}
+
+function cerrarPanelAltaServicio(){
+	var div = $("#div_altaServicio");
 	div.hide();
 }

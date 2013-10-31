@@ -1,9 +1,4 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 ?>
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap-responsive.css" media="screen" />
@@ -109,21 +104,21 @@
 	-->
 	<div hidden id="div_altaServicio" class="modalChocolate modal pelo" style="overflow-y: auto;display: block;width: 26%;min-width: 300px;margin-right: auto;">
 	  <div class="modal-header">
-		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="cerrarPanelLogin()">X</button>
+		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="cerrarPanelAltaServicio()">X</button>
 		    <h3>Alta de Servicio</h3>
 	  </div>
 	  <div class="modal-body">
             <div class="row">
                 <div class="col-md-12" style="margin-left: auto;margin-right: auto;">
                     <h4>Datos de Usuario</h4>
-                    <p>Correo               <input type="text" class="col-md-12 form-control" id="loginCorreo"></p>
-                    <p>Contrase&ntilde;a    <input type="password" class="col-md-12 form-control" id="loginPass"></p>
+                    <p>Nombre del Servicio <input type="text" class="col-md-12 form-control" id="alta_serv_nombre"></p>
+                    <p>Descripcion   <textarea type="textarea" class="col-md-12 form-control" id="alta_serv_desc"></textarea></p>
                 </div>
             </div>
 	  </div>
 	  <div class="modal-footer">
-	    <button type="button" data-dismiss="modal" class="btn" onclick="cerrarPanelLogin()">Cerrar</button>
-	    <button type="button" class="btn btn-primary" onclick="IniciarSesion()">Confirmar</button>
+	    <button type="button" data-dismiss="modal" class="btn" onclick="cerrarPanelAltaServicio()">Cerrar</button>
+	    <button type="button" class="btn btn-primary" onclick="AltaServicio()">Confirmar</button>
 	  </div>
 	</div>
 
