@@ -14,15 +14,15 @@ function registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimient
 			correoElectronico : mail,
 			ci 				  : ci,
 			direccion		  : direccion,
-			operacion		  : 'registrarUsuario'
+			operation		  : 'registrarUsuario'
 		}),
 		datatype: "json",
 		contentType: "application/json",
 	})
 	.done(function(msg){
-		console.log('Guardado con exito!!');
+		console.log(msg);
 	})
-	.fail(function(){
-		console.log('Fallo al guardar!!');
+	.fail(function(msg){
+		console.log(msg);
 	})
 }
