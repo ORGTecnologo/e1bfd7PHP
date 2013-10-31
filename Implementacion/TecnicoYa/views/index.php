@@ -4,6 +4,16 @@
 <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" media="screen" />
 
 <body>
+    <?php
+    
+    if (!isset($_SESSION["counter"])){
+        $_SESSION["counter"] = 0;
+    }    
+    echo "counter = " . $_SESSION["counter"];
+    $_SESSION["counter"] = $_SESSION["counter"] + 1;  
+    
+    ?>
+    
 <nav class="navbarFija navbar navbar-default " style="position: fixed !important;width: 100%;" role="navigation">
   <!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->

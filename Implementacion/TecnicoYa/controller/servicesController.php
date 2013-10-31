@@ -85,13 +85,16 @@
 
 		public function performPost($url, $arguments, $accept) {
 			$operacion = $arguments['operation'];
+                        $result = false;
 			switch($operacion) {
 				case 'registrarUsuario':
 					include __SITE_PATH . '/model/' . 'usuarioModel.php';
 					$usuarioModel = new usuarioModel;
-					$usuarioModel->registrarUsuario($arguments["usuario"],$arguments["contrasenia1"],$arguments["contrasenia2"],$arguments["nombre"],$arguments["apellido"],$arguments["fechaNacimiento"],$arguments["tipo"]);
+					$result = $usuarioModel->registrarUsuario($arguments["usuario"],$arguments["contrasenia1"],$arguments["contrasenia2"],$arguments["nombre"],$arguments["apellido"],$arguments["fechaNacimiento"],$arguments["tipo"]);
 					break;				
 			}
+                        
+                        echo $result;
 		}
 
 		public function performPut($url, $arguments, $accept) {

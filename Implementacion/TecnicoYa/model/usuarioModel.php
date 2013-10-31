@@ -8,7 +8,7 @@
 			echo $json_response;
 		}
 		
-		public function registrarUsuario($usr,$pass1,$pass2,$nombre,$apellido,$fechaNac,$tipo){
+		public function registrarUsuario($usr,$ci,$nombre,$apellido,$pass1,$pass2,$celular,$direccion,$id_barrio,$ubicacion_latitud,$ubicacion_longitud){
 			
 			$respuesta = array();
 			if (empty($usr))
@@ -28,23 +28,44 @@
 			if ($checkUser !== false){
 				array_push($respuesta, 'usr_already_exists');
 			}
-				
+                        
+                        $id_ubicacion = null;
+                        if (empty($ubicacion_latitud) || empty($ubicacion_longitud)){
+                            $insertData = array( 
+                                'latitud' => $ubicacion_latitud, 
+                                'longitud' => $ubicacion_longitud
+                            );
+                            $id_ubicacion = $db->insert('tbl_ubicacion', $insertData);
+                        }
 			if (empty($respuesta)) {				
 				
 				$pass1 = md5($pass1);
-				$insertData = array('usuario'    => $usr,'nombres' => $nombre,'apellidos'  => $apellido,'contrasenia'  => $pass1);
+				$insertData = array(                                    
+                                    'email'    => $usr,
+                                    'ci' => $ci,
+                                    'nombres'  => $nombre,
+                                    'apellidos'  => $apellido,
+                                    'contrasenia' => $pass1,
+                                    'celular' => $celular,
+                                    'direccion' => $direccion,
+                                    'habilitado' => true,
+                                    'fk_barrio' => $id_barrio,
+                                    'fk_ubicacion' => $id_ubicacion
+                                );
 				$id_insertado = $db->insert('tbl_usuarios', $insertData);
-				/*
-				if (strcmp($tipo,'Cliente') == 0){
-					$insertData = array('usuario'    => $usr,'direccion' => '','habilitado'  => true);
-					$results = $db->insert('tbl_clientes', $insertData);
-				} else {
-					$insertData = array('usuario'    => $usr,'habilitado' => true);
-					$results = $db->insert('tbl_tecnicos', $insertData);
-				}		
-				*/			
+                                
+                                $insertData1 = array( 
+                                    'email' => $usr
+                                );                                
+                                $tabla = "";
+                                if ( strcmp($tipo,"tecnico") == 0 ){
+                                    $tabla = "tbl_tecnicos";                                    
+                                } else {
+                                    $tabla = "tbl_clientes";                                    
+                                }
+                                $id_insertado1 = $db->insert($tabla, $insertData1);			
 				
-				if ($id_insertado !== false)
+				if ($id_insertado !== false && $id_insertado1 !== false)
 					array_push($respuesta, 'OK');
 				else 
 					array_push($respuesta, 'FALLA');
@@ -52,7 +73,7 @@
 				array_push($respuesta, 'FALLA');
 			}
 			$json_response = json_encode($respuesta);
-			echo $json_response;
+			return $json_response;
 		}
 		
 	}
