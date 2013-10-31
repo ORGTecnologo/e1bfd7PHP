@@ -386,19 +386,20 @@
 <!-- Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero-->		
 	<div class="col-md-12 separador"></div>
 	
-	<div id="loginUsuario" class="modalChocolate modal" hidden>
+	<div id="loginUsuario" class="modalChocolate modal" style="overflow-y: auto;
+display: block;width: 26%;min-width: 300px;margin-right: auto;" hidden>
 	  <div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="cerrarPanelLogin()">X</button>
 	    <h3>Iniciar Sesion</h3>
 	  </div>
 	  <div class="modal-body">
-	    <div class="row">
-	      <div class="col-md-12">
-			<h4>Datos de Usuario</h4>
-			<p>Correo    			<input type="text" class="col-md-12 form-control" id="loginCorreo"></p>
-			<p>Contrase&ntilde;a    <input type="password" class="col-md-12 form-control" id="loginPass"></p>
-	      </div>
-	    </div>
+            <div class="row">
+                <div class="col-md-12" style="margin-left: auto;margin-right: auto;">
+                    <h4>Datos de Usuario</h4>
+                    <p>Correo               <input type="text" class="col-md-12 form-control" id="loginCorreo"></p>
+                    <p>Contrase&ntilde;a    <input type="password" class="col-md-12 form-control" id="loginPass"></p>
+                </div>
+            </div>
 	  </div>
 	  <div class="modal-footer">
 	    <button type="button" data-dismiss="modal" class="btn" onclick="cerrarPanelLogin()">Cerrar</button>
@@ -406,44 +407,44 @@
 	  </div>
 	</div>
 
-	<div id="registroUsuario" class="modalChocolate modal" hidden>
-	  <div class="modal-header">
-	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="cerrarPanelRegistro()">X</button>
-	    <h3>Registro de Usuario</h3>
-	  </div>
-	  <div class="modal-body">
-			<div class="rowo">
-				<div class="col-md-6">
-					<h4>Datos de Usuario</h4>
-					<p>Correo    			<input type="email" class="col-md-12 form-control" id="inputCorreo"></p>
-					<p>Contrase&ntilde;a    <input type="password" class="col-md-12 form-control" id="inputPass"></p>
-					<p>Nombre Usuario  		<input type="text" class="col-md-12 form-control" id="inputNick"></p>     
-				</div>
-				<div class="col-md-6">
-					<h4>Datos Personales</h4>
-					<p>Nombres	    		<input type="text" class="col-md-12 form-control" id="inputNombre"></p>
-					<p>Apellidos    		<input type="text" class="col-md-12 form-control" id="inputApellido"></p>
-					<p>Sexo 
-						<select id="inputSexo" class="col-md-12 form-control">
-							<option value="masculino" selected>Hombre</option>
-							<option value="femenino">Mujer</option>
-						</select>
-					</p>					
-					<p>Fecha de Nacimiento  <input type="text" class="col-md-12 form-control" id="inputFecha"></p>
-					<p>Telefono Movil    	<input type="tel" class="col-md-12 form-control" id="inputTel" onkeypress="return onlyNumbersDano(event)"></p>
-				</div>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<button type="button" data-dismiss="modal" class="btn" onclick="cerrarPanelRegistro()">Cerrar</button>
-			<button type="button" class="btn btn-primary" onclick="crearUsuario()">Confirmar</button>
-		</div>
-	</div>
-	
+    <div id="registroUsuario" class="modalChocolate modal" style="overflow-y: auto;
+            display: block;width: 26%;min-width: 500px;/*margin-left: auto;*/margin-right: auto;" 
+         hidden>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="cerrarPanelRegistro()">X</button>
+            <h3>Registro de Usuario/Tecnico</h3>
+        </div>
+        <div class="modal-body">
+            <div class="rowo">
+                <div class="col-md-6">
+                        <h4>Datos de Usuario</h4>
+                        <p>Correo    			<input type="email" class="col-md-12 form-control" id="inputCorreo"></p>
+                        <p>Contrase&ntilde;a    <input type="password" class="col-md-12 form-control" id="inputPass"></p>
+                        <p>Nombre Usuario  		<input type="text" class="col-md-12 form-control" id="inputNick"></p>     
+                </div>
+                <div class="col-md-6">
+                    <h4>Datos Personales</h4>
+                    <p>Nombres	 <input type="text" class="col-md-12 form-control" id="inputNombre"></p>
+                    <p>Apellidos <input type="text" class="col-md-12 form-control" id="inputApellido"></p>
+                    <p>Sexo
+                    <select id="inputSexo" class="col-md-12 form-control">
+                        <option value="masculino" selected>Hombre</option>
+                        <option value="femenino">Mujer</option>
+                    </select>
+                    </p>					
+                    <p>Fecha de Nacimiento      <input type="text" class="col-md-12 form-control" id="inputFecha"></p>
+                    <p>Telefono Movil     	<input type="tel" class="col-md-12 form-control" id="inputTel" onkeypress="return onlyNumbersDano(event)"></p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn" onclick="cerrarPanelRegistro()">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="crearUsuario()">Confirmar</button>
+        </div>
+    </div>
 </body>
 
 <script src="includes/js/jquery.min.js"></script>
-<script src="includes/http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script src="includes/js/jquery-ui.js"></script>
 <script src="includes/js/holder.js"></script>
 <script src="includes/js/bootstrap.js"></script>
