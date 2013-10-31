@@ -1,7 +1,4 @@
 <?php
-
-	
-
 	/*** include the controller class ***/
 	include __SITE_PATH . '/application/' . 'controller_base.class.php';
 
@@ -25,11 +22,9 @@
 		}
 		include ($file);
 	}
-
 	/*** a new registry object ***/	
 	$registry = new registry;
 	
 	/*** create the database registry object ***/
 	//$registry->db = db::getInstance();
-
 ?>
