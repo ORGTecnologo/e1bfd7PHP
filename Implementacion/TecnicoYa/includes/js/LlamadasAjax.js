@@ -1,5 +1,5 @@
 //Registro de Usuario
-var ip = '/e1bfd7PHP/Implementacion/TecnicoYa/';
+var ip = '/e1bfd7PHP/Implementacion/TecnicoYa';
 
 function registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimiento,cel,ci,direccion){
 	$.ajax({
@@ -22,11 +22,11 @@ function registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimient
 		contentType: "application/json",
 	})
 	.done(function(msg){
-		console.log('Guardado con exito!!');
+		console.log('EXITO, SERVIDOR RESPONDE:  ' + msg);
 		cerrarPanelRegistro();
 	})
-	.fail(function(){
-		console.log('Fallo al guardar!!');
+	.fail(function(msg){
+		console.log('FALLO, SERVIDOR RESPONDE:  ' + msg);
 		alert("Houston, tenemos un problema!!!");
 	})
 }
