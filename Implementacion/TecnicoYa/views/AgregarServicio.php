@@ -5,10 +5,10 @@
  * and open the template in the editor.
  */
 ?>
-<link rel="stylesheet" type="text/css" href="../includes/css/bootstrap.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../includes/css/bootstrap-responsive.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/bootstrap.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/bootstrap-responsive.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../includes/css/Admin_Home.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/Admin_Home.css" media="screen" />
 <!DOCTYPE html>
 <html>
 
@@ -44,7 +44,7 @@
 	<div class="container marketing" style="height: 75%">
 		<div class="row-fluid">
 			<div class="span3">
-				<div class="item"><img class="span12" src="../includes/img/servicios.jpg"></img></div>
+				<div class="item"><img class="span12" src="includes/img/servicios.jpg"></img></div>
 			</div>
 			<div class="span8" aling="center">
 				<p style="font-size: 25px;">Agregar Servicios</p>
@@ -101,11 +101,11 @@
 </body>
 
 </html>
-<script src="../includes/js/jquery.min.js"></script>
-<script src="../includes/http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script src="../includes/js/jquery-ui.js"></script>
-<script src="../includes/js/holder.js"></script>
-<script src="../includes/js/bootstrap.js"></script>
-<script src="../includes/js/LlamadasAjax.js"></script>
-<script src="../includes/js/main.js"></script>
+<script src="includes/js/jquery.min.js"></script>
+<script src="includes/http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="includes/js/jquery-ui.js"></script>
+<script src="includes/js/holder.js"></script>
+<script src="includes/js/bootstrap.js"></script>
+<script src="includes/js/LlamadasAjax.js"></script>
+<script src="includes/js/main.js"></script>
 
