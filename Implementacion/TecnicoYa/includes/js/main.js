@@ -13,12 +13,8 @@ $(document).ready(function(){
 	      dateFormat: "dd-mm-yy",
 	      maxDate: 0
     });
-   
-    //rol = new Rol(1,"Usuario");
-    //modificarUsuarioX("canario","mouse","contrasenia","apellido",rol);
-    //obtenerUsuariosServ();
-//    registroUsuario("pelo","nombre","contrasenia","apellido","mail");
-    
+
+   $('.pelo').hide();
 });
 
 function onlyNumbersDano(evt){
@@ -40,6 +36,12 @@ function clickRegistroUsuario(){
 	var div = $("#registroUsuario");
 	div.show();
 }
+
+function clickAltaServicio(){
+	var div = $("#div_altaServicio");
+	div.show();
+}
+
 
 function Pintar_hasError(input){
 

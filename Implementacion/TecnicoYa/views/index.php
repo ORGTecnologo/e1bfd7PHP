@@ -387,8 +387,8 @@
 <!-- Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero Jardinero-->		
 	<div class="col-md-12 separador"></div>
 	
-	<div id="loginUsuario" class="modalChocolate modal" style="overflow-y: auto;
-display: block;width: 26%;min-width: 300px;margin-right: auto;" hidden>
+	<div hidden id="loginUsuario" class="modalChocolate modal pelo" style="overflow-y: auto;
+		display: block;width: 26%;min-width: 300px;margin-right: auto;">
 	  <div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="cerrarPanelLogin()">X</button>
 	    <h3>Iniciar Sesion</h3>
@@ -408,9 +408,8 @@ display: block;width: 26%;min-width: 300px;margin-right: auto;" hidden>
 	  </div>
 	</div>
 
-    <div id="registroUsuario" class="modalChocolate modal" style="overflow-y: auto;
-            display: block;width: 26%;min-width: 500px;/*margin-left: auto;*/margin-right: auto;" 
-         hidden>
+    <div hidden id="registroUsuario" class="modalChocolate modal pelo" style="overflow-y: auto;
+            display: block;width: 26%;min-width: 500px;margin-right: auto;">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="cerrarPanelRegistro()">X</button>
             <h3>Registro de Usuario/Tecnico</h3>
@@ -523,5 +522,3 @@ display: block;width: 26%;min-width: 300px;margin-right: auto;" hidden>
 <script src="includes/js/ajax-calls-usuario.js"></script>
 <script src="includes/js/ajax-calls-zona.js"></script>
 -->
-
-
