@@ -78,7 +78,6 @@ function crearUsuario(){
 		var ci 			= document.getElementById('inputTel').value;
 		var direccion	= document.getElementById('inputDireccion').value;		
 
-
 		if(validateEmail(mail)){
 			//if continuar validando
 			registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimiento,cel,ci,direccion);

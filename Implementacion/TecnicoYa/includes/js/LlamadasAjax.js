@@ -1,7 +1,9 @@
 //Registro de Usuario
+var ip = '/e1bfd7PHP/Implementacion/TecnicoYa/';
+
 function registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimiento,cel,ci,direccion){
 	$.ajax({
-		url: '/?rt=services',
+		url: ip + '/?rt=services',
 		type: 'POST',
 		data:JSON.stringify({
 			usuario           : usuario,
@@ -14,7 +16,7 @@ function registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimient
 			correoElectronico : mail,
 			ci 				  : ci,
 			direccion		  : direccion,
-			operacion		  : 'registrarUsuario'
+			operation		  : 'registrarUsuario'
 		}),
 		datatype: "json",
 		contentType: "application/json",
@@ -31,22 +33,22 @@ function registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimient
 
 function altaServicio(nombre,descripcion){
 	$.ajax({
-		url: '/?rt=services',
+		url: ip + '/?rt=services',
 		type: 'POST',
 		data:JSON.stringify({
 			nombres 	: nombre,
 			descripcion : descripcion,
-			operacion	: 'altaServicio'
+			operation	: 'altaServicio'
 		}),
 		datatype: "json",
 		contentType: "application/json",
 	})
 	.done(function(msg){
-		console.log('Guardado con exito!!');
+		console.log('EXITO, SERVIDOR RESPONDE:  ' + msg);
 		cerrarPanelAltaServicio();
 	})
-	.fail(function(){
-		console.log('Fallo al guardar!!');
+	.fail(function(msg){
+		console.log('FALLO, SERVIDOR RESPONDE:  ' + msg);
 		alert("Houston, tenemos un problema!!!");
 	})
 }
