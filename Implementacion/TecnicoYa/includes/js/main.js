@@ -104,7 +104,7 @@ function AltaServicio(){
 	var nombre 	= document.getElementById('alta_serv_nombre').value;
 	var descripcion = document.getElementById('alta_serv_desc').value;
 	
-	loginUsuario(correo,pass);
+	altaServicio(nombre,descripcion);
 }
 //--------------------------------------------------------------------------
 //Control de divs
