@@ -5,6 +5,9 @@
 <link rel="stylesheet" type="text/css" href="includes/css/jquery-ui.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/Admin_Home.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/market.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/alertify.core.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/alertify.default.css" media="screen" />
+
 <!DOCTYPE html>
 <html>
 
@@ -131,3 +134,4 @@
 <script src="includes/js/bootstrap.js"></script>
 <script src="includes/js/LlamadasAjax.js"></script>
 <script src="includes/js/main.js"></script>
+<script src="includes/js/alertify.min.js"></script>

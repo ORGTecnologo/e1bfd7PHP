@@ -23,7 +23,7 @@ class servicioModel {
                 'nombre' => $nombre,
                 'descripcion' => $descripcion
             );
-            $id_insertado = $db->insert('tbl_servicos', $insertData);
+            $id_insertado = $db->insert('tbl_servicios', $insertData);
             if ($id_insertado !== false)
                 array_push($respuesta, 'OK');
             else

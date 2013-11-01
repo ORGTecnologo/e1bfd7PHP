@@ -344,7 +344,6 @@ class MysqliDb {
                 // wrap values in quotes
                 foreach ($values as $key => $val) {
                     $values[$key] = "'{$val}'";
-                    var_dump($values[$key]);
                     $this->_paramTypeList .= $this->_determineType($val);
                 }
 
@@ -495,7 +494,7 @@ class MysqliDb {
     }
 
     public function servicio_findByName($name) {
-        $statement = $this->_mysqli->prepare("SELECT id,nombre,descripcion FROM tbl_servicios WHERE nombre = ?");
+        $statement = $this->_mysqli->prepare("SELECT id_servicio,nombre,descripcion FROM tbl_servicios WHERE nombre = ?");
         if ($statement === false) {
             trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
         }
