@@ -29,8 +29,7 @@
 
 			if (empty($respuesta)) {				
 				
-                                $direccion = "--";
-                            
+                                $true = 1;
 				$pass1 = md5($pass1);
 				$insertData = array(                                    
                                     'email'    => $mail,
@@ -42,15 +41,13 @@
                                     'celular' => $celular,
                                     'sexo' => $sexo,
                                     'direccion' => $direccion,
-                                    'habilitado' => true,
+                                    'habilitado' => $true,
                                     'fecha_nacimiento' => $nacimiento
-                                    /*'fk_barrio' => $id_barrio,*/
-                                    /*'fk_ubicacion' => $id_ubicacion*/
                                 );
 				$id_insertado = $db->insert('tbl_usuarios', $insertData);
                                 
                                 $insertData1 = array( 
-                                    'email' => $usr
+                                    'email' => $mail
                                 );                             
                                 $id_insertado1 = $db->insert("tbl_clientes", $insertData1);			
 				

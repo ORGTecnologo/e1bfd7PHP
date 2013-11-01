@@ -90,7 +90,8 @@ class RestService {
             case 'registrarUsuario':
                 include __SITE_PATH . '/model/' . 'usuarioModel.php';
                 $usuarioModel = new usuarioModel;
-                $result = $usuarioModel->registrarUsuario($arguments["usuario"], $arguments["contrasenia"], $arguments["nombre"], $arguments["apellido"],$arguments["sexo"], $arguments["nacimiento"], $arguments["cel"], $arguments["mail"],$arguments["ci"]);
+                var_dump($arguments);
+                $result = $usuarioModel->registrarUsuario($arguments["usuario"], $arguments["contrasenia"], $arguments["nombres"], $arguments["apellidos"],$arguments["sexo"], $arguments["fechaNacimiento"], $arguments["telefonoMovil"], $arguments["correoElectronico"],$arguments["ci"], $arguments["direccion"]);
                 break;
             case 'altaServicio':
                 include __SITE_PATH . '/model/' . 'servicioModel.php';

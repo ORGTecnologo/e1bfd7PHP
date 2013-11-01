@@ -78,7 +78,6 @@ function crearUsuario(){
 		var ci 			= document.getElementById('inputTel').value;
 		var direccion	= document.getElementById('inputDireccion').value;		
 
-
 		if(validateEmail(mail)){
 			//if continuar validando
 			registroUsuario(usuario,contrasenia,mail,nombre,apellido,sexo,nacimiento,cel,ci,direccion);
@@ -104,7 +103,7 @@ function AltaServicio(){
 	var nombre 	= document.getElementById('alta_serv_nombre').value;
 	var descripcion = document.getElementById('alta_serv_desc').value;
 	
-	loginUsuario(correo,pass);
+	altaServicio(nombre,descripcion);
 }
 //--------------------------------------------------------------------------
 //Control de divs
