@@ -1,5 +1,5 @@
 //Registro de Usuario
-var ip = 'TecnicoYa';
+var ip = '/e1bfd7PHP/Implementacion/TecnicoYa/';
 
 function registroUsuario(usuario, contrasenia, mail, nombre, apellido, sexo, nacimiento, cel, ci, direccion) {
     $.ajax({
@@ -22,14 +22,15 @@ function registroUsuario(usuario, contrasenia, mail, nombre, apellido, sexo, nac
         contentType: "application/json",
     })
     .done(function(msg) {
-        if (msg == "OK")
+        var msg = JSON.parse(msg);
+        if (msg.resultado === "OK")
             alertify.success("Usuario registrado con éxito");
         else
             alertify.error("Error al registrar usuario");
         console.log(msg);
         cerrarPanelRegistro();
     })
-            .fail(function(msg) {
+    .fail(function(msg) {
         console.log(msg);
     })
 }

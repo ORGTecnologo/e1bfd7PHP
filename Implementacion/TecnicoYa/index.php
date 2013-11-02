@@ -1,7 +1,8 @@
 <?php
 	
 	/*** error reporting on ***/
-	error_reporting(E_ALL);
+	//error_reporting(E_ALL);
+        error_reporting(E_ALL ^ E_NOTICE);
 
 	/*** define the site path constant ***/
 	$site_path = realpath(dirname(__FILE__));

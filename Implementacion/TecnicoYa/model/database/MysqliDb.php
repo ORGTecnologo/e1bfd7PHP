@@ -70,7 +70,7 @@ class MysqliDb {
      * @param int $port
      */
 
-    public function __construct($host, $username, $password, $db, $port = NULL) {
+    private function __construct($host, $username, $password, $db, $port = NULL) {
         if ($port == NULL)
             $port = ini_get('mysqli.default_port');
 
@@ -79,6 +79,8 @@ class MysqliDb {
         $this->_mysqli->set_charset('utf8');
 
         self::$_instance = $this;
+        
+        $this->_paramTypeList = "";
     }
 
     /**
@@ -91,6 +93,8 @@ class MysqliDb {
      * @return object Returns the current instance.
      */
     public static function getInstance() {
+        if (self::$_instance == null)
+            self::$_instance = new MysqliDb('localhost', 'root', 'ms_admin', 'tecnico_ya_database');
         return self::$_instance;
     }
 
@@ -499,6 +503,20 @@ class MysqliDb {
             trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
         }
         $statement->bind_param('s', $name);
+        $statement->execute();
+        $result = $statement->get_result();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {
+            return $row;
+        }
+        return false;
+    }
+    
+        public function servicio_findBCi($ci) {
+        $statement = $this->_mysqli->prepare("SELECT id_servicio,nombre,descripcion FROM tbl_servicios WHERE ci = ?");
+        if ($statement === false) {
+            trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('s', ci);
         $statement->execute();
         $result = $statement->get_result();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
