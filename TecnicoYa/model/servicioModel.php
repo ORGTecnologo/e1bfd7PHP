@@ -5,17 +5,18 @@ class servicioModel {
     public function altaServicio($nombre, $descripcion) {
 
         $respuesta = array();
+        $errs = array();
         if (empty($nombre))
-            array_push($respuesta, 'nombre_requerido');
+            array_push($errs, 'nombre_requerido');
         if (empty($descripcion))
-            array_push($respuesta, 'nombre_requerido');
+            array_push($errs, 'nombre_requerido');
 
         require_once('database/MysqliDb.php');
-        $db = new MysqliDb('localhost', 'root', 'ms_admin', 'tecnico_ya_database');
+        $db = MysqliDb::getInstance();  
 
         $serv = $db->servicio_findByName($nombre);
         if ($serv !== false) {
-            array_push($respuesta, 'nombre_ya_existente');
+            array_push($errs, 'nombre_ya_existente');
         }
 
         if (empty($respuesta)) {
@@ -25,12 +26,23 @@ class servicioModel {
             );
             $id_insertado = $db->insert('tbl_servicios', $insertData);
             if ($id_insertado !== false)
-                array_push($respuesta, 'OK');
+                $respuesta['resultado'] = 'OK';
             else
-                array_push($respuesta, 'FALLA');
+                $respuesta['resultado'] = 'FALLA';
         }
+        if (strcmp($respuesta['resultado'], 'FALLA'))
+            $respuesta['errores'] = $errs;
+
         $json_response = json_encode($respuesta);
         return $json_response;
+    }
+
+    public function obtenerTodosServicios(){
+        
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+        $servicios = $db->servicios_getTodos();
+        return $servicios;
     }
 
 }

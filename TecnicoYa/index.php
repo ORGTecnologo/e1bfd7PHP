@@ -1,15 +1,18 @@
 <?php
 	
 	/*** error reporting on ***/
-	//error_reporting(E_ALL);
-        error_reporting(E_ALL ^ E_NOTICE);
+	error_reporting(E_ALL);
+    //error_reporting(E_ALL ^ E_NOTICE);
 
 	/*** define the site path constant ***/
 	$site_path = realpath(dirname(__FILE__));
 	define ('__SITE_PATH', $site_path);
 	
-        // inicio la sesion
-        session_start();
+    // inicio la sesion
+    session_start();
+
+    if (!isset($_SESSION["autenticado"]) )
+    	$_SESSION["autenticado"] = false;
         
 	/*** include the init.php file ***/
 	include 'includes/init.php';

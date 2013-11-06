@@ -25,6 +25,15 @@
 		            </div>
 	
 		    	</div>
+	    		<?php
+					if (!isset($_SESSION["autenticado"]) || !$_SESSION["autenticado"]){
+						echo '<button class="btn btn-primary barraBusquedaHome" href="#registroUsuario" onclick="clickRegistroUsuario()">Registrarse</button>';
+								echo '<button class="btn btn-primary barraBusquedaHome" onclick="clickLogin()">Login</button>';
+					} else {
+						$usr = $_SESSION["usuario"];
+						echo 'Hola ' . $usr[0] . '!(' . '<a href="/e1bfd7PHP/TecnicoYa/?rt=admin/logout">Salir</a>' . ')';
+					}
+				?>
 			</div>
 		</div>
 	</div>
@@ -33,7 +42,7 @@
 			<ul class="nav nav-list">
 				<li class="nav-header">Administracion</li>
 				<li class="active"><a href="#">Inicio</a></li>
-				<li><a href="#">Servicios</a></li>
+				<li><a onclick="gestionServicios()">Servicios</a></li>
 				<li><a href="#">Usuarios</a></li>
 				<li><a href="#">Tecnicos</a></li>
 				<li><a href="#">Barrios</a></li>
@@ -51,37 +60,8 @@
 						<p class="col-md-8" style="font-size: 25px;">Alta, Baja y Modificacion Servicios</p>
 						<p class="col-md-1" onclick="clickAltaServicio()"><img class="span12" src="includes/img/agregarServicio.jpeg"></img></p>
 					</div>
-		                <div class="span8" aling="center">
-		                    <table class="table table-striped">  
-		                        <thead>  
-		                          <tr>    
-		                            <th>Servicio</th>  
-		                            <th>Descripcion</th>   
-		                            <th></th>
-		                            <th></th>
-		                          </tr>  
-		                        </thead>  
-		                        <tbody>  
-		                          <tr>  
-		                            <td>Carpintero</td>  
-		                            <td>Persona que hace o arregla muebles.</td>
-		                            <td><a>modificar</a></td>
-		                            <td><a>eliminar</a></td>
-		                          </tr>  
-		                          <tr>  
-		                            <td>Electrisista</td>  
-		                            <td>Se encarga de arreglar instalaciones electricas.</td>  
-		                            <td><a>modificar</a></td>
-		                            <td><a>eliminar</a></td>
-		                          </tr>  
-		                          <tr>  
-		                            <td>Reparador Pc</td>  
-		                            <td>Arregla computadoras.</td>  
-		                            <td><a>modificar</a></td>
-		                            <td><a>eliminar</a></td>
-		                          </tr>  
-		                        </tbody>  
-		                    </table>
+		                <div id="wrapperGrillasAdministracion" class="span8" aling="center">
+		                    
 		                </div>
 					</div>
 		</div>

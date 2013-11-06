@@ -16,3 +16,14 @@ html, body, #map-canvas {
 .alignCenter {
 	text-align : center;
 }
+
+.hidden {
+	visibility: hidden;
+}
+
+#loginUsuarioAdministrador{
+	width: 20%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: lightsteelblue;
+}

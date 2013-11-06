@@ -1,5 +1,5 @@
 //Registro de Usuario
-var ip = '/e1bfd7PHP/Implementacion/TecnicoYa/';
+var ip = '/e1bfd7PHP/TecnicoYa/';
 
 function registroUsuario(usuario, contrasenia, mail, nombre, apellido, sexo, nacimiento, cel, ci, direccion) {
     $.ajax({
@@ -23,12 +23,40 @@ function registroUsuario(usuario, contrasenia, mail, nombre, apellido, sexo, nac
     })
     .done(function(msg) {
         var msg = JSON.parse(msg);
-        if (msg.resultado === "OK")
+        if (msg.resultado === "OK"){ 
             alertify.success("Usuario registrado con éxito");
-        else
-            alertify.error("Error al registrar usuario");
+            cerrarPanelRegistro();
+        } else{
+            alertify.error("Error al registrar usuario.");
+        }
+        console.log(msg);        
+    })
+    .fail(function(msg) {
         console.log(msg);
-        cerrarPanelRegistro();
+    })
+}
+
+function loginUsuario(usuario,contrasenia) {
+    $.ajax({
+        url: ip + '/?rt=services',
+        type: 'POST',
+        data: JSON.stringify({
+            usuario: usuario,
+            contrasenia: contrasenia,           
+            operation: 'loginUsuario'
+        }),
+        datatype: "json",
+        contentType: "application/json",
+    })
+    .done(function(msg) {
+        var msg = JSON.parse(msg);
+        if (msg.resultado === "OK"){ 
+            alertify.success("Usuario registrado con éxito");
+            cerrarPanelRegistro();
+        } else{
+            alertify.error("Error al registrar usuario.");
+        }
+        console.log(msg);        
     })
     .fail(function(msg) {
         console.log(msg);
@@ -48,8 +76,8 @@ function altaServicio(nombre, descripcion) {
         contentType: "application/json",
     })
     .done(function(msg) {
-        alert(msg);
-        if (msg == "OK")
+        var msg = JSON.parse(msg);
+        if (msg.resultado == "OK")
             alertify.success("Servicio registrado correctamente");
         else
             alertify.error("Error al registrar servicio");
@@ -60,4 +88,8 @@ function altaServicio(nombre, descripcion) {
         console.log('FALLO, SERVIDOR RESPONDE:  ' + msg);
         alert("Houston, tenemos un problema!!!");
     })
+}
+
+function gestionServicios(){
+    $("#wrapperGrillasAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=admin/obtenerTodosServicios");    
 }

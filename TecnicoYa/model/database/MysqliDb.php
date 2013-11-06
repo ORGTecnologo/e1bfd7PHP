@@ -469,14 +469,27 @@ class MysqliDb {
      * 
      * */
 
+    /* USUARIOS */
     public function usuario_findByNick($nick) {
-        $statement = $this->_mysqli->prepare("SELECT email,nick,contrasenia FROM tbl_usuarios WHERE nick = ?");
+        $mysqli = $this->getConnection();
+        $statement = $mysqli->prepare("
+            select nick, email ,
+            case 
+                when exists( select * from tbl_usuarios u join tbl_clientes c on u.email = c.email) then 'usuario_cliente'
+                when exists( select * from tbl_usuarios u join tbl_administradores a on u.email = a.email) then 'usuario_administrador'
+                when exists( select * from tbl_usuarios u join tbl_tecnicos t on u.email = t.email) then 'usuario_tecnico'
+                else 'otro'
+            end as tipo_usuario
+            from tbl_usuarios
+            where nick = ?
+        ");
         if ($statement === false) {
             trigger_error("[usuario_findByNick] - Error en sentencia sql", E_USER_ERROR);
         }
         $statement->bind_param('s', $nick);
         $statement->execute();
         $result = $statement->get_result();
+        $mysqli->close();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
             return $row;
         }
@@ -484,45 +497,164 @@ class MysqliDb {
     }
 
     public function usuario_findByEmail($mail) {
-        $statement = $this->_mysqli->prepare("SELECT email,nick,contrasenia FROM tbl_usuarios WHERE email = ?");
+        $mysqli = $this->getConnection();
+        $statement = $mysqli->prepare("            
+            select nick, email ,
+            case 
+                when exists( select * from tbl_usuarios u join tbl_clientes c on u.email = c.email) then 'usuario_cliente'
+                when exists( select * from tbl_usuarios u join tbl_administradores a on u.email = a.email) then 'usuario_administrador'
+                when exists( select * from tbl_usuarios u join tbl_tecnicos t on u.email = t.email) then 'usuario_tecnico'
+                else 'otro'
+            end as tipo_usuario
+            from tbl_usuarios
+            where email = ?
+        ");
         if ($statement === false) {
             trigger_error("[usuario_findByUser] - Error en sentencia sql", E_USER_ERROR);
         }
         $statement->bind_param('s', $mail);
         $statement->execute();
         $result = $statement->get_result();
+        $mysqli->close();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
             return $row;
         }
         return false;
     }
 
+
+    public function usuario_findByCi($ci) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select nick, email ,
+            case 
+                when exists( select * from tbl_usuarios u join tbl_clientes c on u.email = c.email) then 'usuario_cliente'
+                when exists( select * from tbl_usuarios u join tbl_administradores a on u.email = a.email) then 'usuario_administrador'
+                when exists( select * from tbl_usuarios u join tbl_tecnicos t on u.email = t.email) then 'usuario_tecnico'
+                else 'otro'
+            end as tipo_usuario
+            from tbl_usuarios
+            where ci = ?
+        ");
+        //SELECT email,nick,contrasenia FROM tbl_usuarios WHERE ci = ?
+        if ($statement === false) {
+            trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('s', $ci);
+        $statement->execute();
+        $result = $statement->get_result();
+        $mysqli->close();
+        //var_dump('ci=' . $ci);
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            return $row;
+        }
+        return false;
+    }
+
+    public function usuario_findByUserAndPAssword($usr,$pwd) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select nick, email ,
+            case 
+                when exists( select * from tbl_usuarios u join tbl_clientes c on u.email = c.email) then 'usuario_cliente'
+                when exists( select * from tbl_usuarios u join tbl_administradores a on u.email = a.email) then 'usuario_administrador'
+                when exists( select * from tbl_usuarios u join tbl_tecnicos t on u.email = t.email) then 'usuario_tecnico'
+                else 'otro'
+            end as tipo_usuario
+            from tbl_usuarios
+            where email = ? and contrasenia = ?
+        ");
+        //SELECT email,nick,contrasenia FROM tbl_usuarios WHERE ci = ?
+        if ($statement === false) {
+            trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('ss', $usr,$pwd);
+        $statement->execute();
+        $result = $statement->get_result();
+        $mysqli->close();
+        //var_dump('ci=' . $ci);
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            return $row;
+        }
+        return false;
+    }
+
+    public function usuario_findAdminByUserAndPAssword($usr,$pwd) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select nick, email , 'usuario_administrador' as tipo_usuario            
+            from tbl_usuarios u
+            where email = ? and contrasenia = ? and
+                exists(select * from tbl_administradores where email = ?)
+        ");
+        //SELECT email,nick,contrasenia FROM tbl_usuarios WHERE ci = ?
+        if ($statement === false) {
+            trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('sss', $usr,$pwd,$usr);
+        $statement->execute();
+        $result = $statement->get_result();
+        $mysqli->close();
+        //var_dump('ci=' . $ci);
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            return $row;
+        }
+        return false;
+    }
+
+
+    /* SERVICIOS */
     public function servicio_findByName($name) {
-        $statement = $this->_mysqli->prepare("SELECT id_servicio,nombre,descripcion FROM tbl_servicios WHERE nombre = ?");
+        $mysqli = $this->getConnection();
+        $statement = $mysqli->prepare("SELECT id_servicio,nombre,descripcion FROM tbl_servicios WHERE nombre = ?");
         if ($statement === false) {
             trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
         }
         $statement->bind_param('s', $name);
         $statement->execute();
         $result = $statement->get_result();
+        $mysqli->close();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
             return $row;
         }
         return false;
     }
-    
-        public function servicio_findBCi($ci) {
-        $statement = $this->_mysqli->prepare("SELECT id_servicio,nombre,descripcion FROM tbl_servicios WHERE ci = ?");
+
+    public function servicios_getTodos() {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select id_servicio,nombre,descripcion from tbl_servicios
+        ");
         if ($statement === false) {
             trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
         }
-        $statement->bind_param('s', ci);
         $statement->execute();
         $result = $statement->get_result();
-        while ($row = $result->fetch_array(MYSQLI_NUM)) {
-            return $row;
+        $mysqli->close();
+        $servicios = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($servicios , $row);
         }
-        return false;
+        return $servicios;
+    }
+
+    /* FUNCIONES AUXILIARES */
+    private function getConnection(){
+        $mysql_server = "localhost";
+        $mysql_user = "root";
+        $mysql_password = "ms_admin";
+        $mysql_db = "tecnico_ya_database";
+        $mysqli = new mysqli($mysql_server, $mysql_user, $mysql_password, $mysql_db);
+        if ($mysqli->connect_errno) {
+            printf("Connection failed: %s \n", $mysqli->connect_error);
+            exit();
+        }
+        $mysqli->set_charset("utf8");
+        return $mysqli;
     }
 
 }

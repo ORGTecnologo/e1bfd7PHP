@@ -7,11 +7,40 @@
 			$json_response = json_encode($usuarios);	 
 			echo $json_response;
 		}
+
+		public function logout(){
+			if ($_SESSION["autenticado"])
+				session_destroy();
+			return true;
+		}
+
+		public function login($usuario,$contrasenia) {
+			require_once('database/MysqliDb.php');
+			$db = MysqliDb::getInstance();
+			$usr = $db->usuario_findByUserAndPAssword($usuario,md5($contrasenia) );
+			if ($usr !== false){
+				$_SESSION["autenticado"] = true;
+				$_SESSION["usuario"] = $usr;
+			}
+		}
+
+		public function loginAdmin($usuario,$contrasenia) {
+			require_once('database/MysqliDb.php');
+			$db = MysqliDb::getInstance();
+			$usr = $db->usuario_findAdminByUserAndPAssword($usuario,md5($contrasenia) );
+			if ($usr !== false){
+				$_SESSION["autenticado"] = true;
+				$_SESSION["usuario"] = $usr;
+				return true;
+			} else {
+				return false;
+			}
+		}
 		
 		public function registrarUsuario($usr, $pass1, $nombre, $apellido,$sexo, $nacimiento, $celular, $mail, $ci,  $direccion){
 			
 			$respuesta = array();
-                        $errs = array();
+            $errs = array();
 			if (empty($usr))
 				array_push($errs, 'usuario_requerido');
 			if (empty($pass1))
@@ -23,38 +52,44 @@
 			if ($checkUser1 !== false){
 				array_push($errs, 'usuario_ya_existente_nick');
 			}
-                        $checkUser2 = $db->usuario_findByEmail($mail);
+			//var_dump('check nick');   
+			//var_dump($checkUser1);
+            $checkUser2 = $db->usuario_findByEmail($mail);
 			if ($checkUser2 !== false){
 				array_push($errs, 'usuario_ya_existente_mail');
-			}   
-                        $checkUser3 = $db->usuario_findByCi($ci);
+			}
+			//var_dump('check mail');   
+			//var_dump($checkUser2);
+            $checkUser3 = $db->usuario_findByCi($ci);
 			if ($checkUser3 !== false){
 				array_push($errs, 'usuario_ya_existente_ci');
 			}    
+			//var_dump('check ci');   
+			//var_dump($checkUser3);
 
 			if (empty($respuesta)) {				
 				
-                                $true = 1;
+                $true = 1;
 				$pass1 = md5($pass1);
 				$insertData = array(                                    
-                                    'email'    => $mail,
-                                    'nick'    => $usr,
-                                    'ci' => $ci,
-                                    'nombres'  => $nombre,
-                                    'apellidos'  => $apellido,
-                                    'contrasenia' => $pass1,
-                                    'celular' => $celular,
-                                    'sexo' => $sexo,
-                                    'direccion' => $direccion,
-                                    'habilitado' => $true,
-                                    'fecha_nacimiento' => $nacimiento
-                                );
+                    'email'    => $mail,
+                    'nick'    => $usr,
+                    'ci' => $ci,
+                    'nombres'  => $nombre,
+                    'apellidos'  => $apellido,
+                    'contrasenia' => $pass1,
+                    'celular' => $celular,
+                    'sexo' => $sexo,
+                    'direccion' => $direccion,
+                    'habilitado' => $true,
+                    'fecha_nacimiento' => $nacimiento
+                );
 				$id_insertado = $db->insert('tbl_usuarios', $insertData);
                                 
-                                $insertData1 = array( 
-                                    'email' => $mail
-                                );                             
-                                $id_insertado1 = $db->insert("tbl_clientes", $insertData1);			
+                $insertData1 = array( 
+                    'email' => $mail
+                );                             
+                $id_insertado1 = $db->insert("tbl_clientes", $insertData1);			
 				
 				if ($id_insertado !== false && $id_insertado1 !== false)
 					$respuesta["resultado"] =  'OK';
@@ -64,9 +99,13 @@
 				$respuesta["resultado"] = 'FALLA';
 			}
                         
-                        if (strcmp($respuesta["resultado"] , 'FALLA') == 0 )
-                                $respuesta["errores"] = $errs;
-                        
+            if (strcmp($respuesta["resultado"] , 'FALLA') == 0 )
+            	$respuesta["errores"] = $errs;
+            else {
+            	$usuario = $db->usuario_findByEmail($mail);
+            	$_SESSION["usuario"] = $usuario;
+            	$_SESSION["autenticado"] = true;
+            }                        
 			$json_response = json_encode($respuesta);                        
 			return $json_response;
 		}
