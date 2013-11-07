@@ -77,8 +77,10 @@ function altaServicio(nombre, descripcion) {
     })
     .done(function(msg) {
         var msg = JSON.parse(msg);
-        if (msg.resultado == "OK")
+        if (msg.resultado == "OK"){
             alertify.success("Servicio registrado correctamente");
+            gestionServicios();
+        }
         else
             alertify.error("Error al registrar servicio");
         console.log('EXITO, SERVIDOR RESPONDE:  ' + msg);

@@ -37,12 +37,34 @@ class servicioModel {
         return $json_response;
     }
 
-    public function obtenerTodosServicios(){
-        
+    public function obtenerTodosServicios(){        
         require_once('database/MysqliDb.php');
         $db = MysqliDb::getInstance();  
         $servicios = $db->servicios_getTodos();
         return $servicios;
+    }
+
+    public function modificarServicio($id,$nombre,$descripcion){
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+        $ok = $db->servicios_updateServicio($id,$nombre,$descripcion);
+        return $ok;
+    }
+
+    public function hablitarServicio($id){
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+        $habilitado = 0;
+        $ok = $db->servicios_updateServicio($id,$habilitado);
+        return $ok;
+    }
+
+    public function deshablitarServicio($id){
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+        $habilitado = 0;
+        $ok = $db->servicios_updateHabilitarServicio($id,$habilitado);
+        return $ok;
     }
 
 }

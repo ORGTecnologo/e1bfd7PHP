@@ -489,7 +489,6 @@ class MysqliDb {
         $statement->bind_param('s', $nick);
         $statement->execute();
         $result = $statement->get_result();
-        $mysqli->close();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
             return $row;
         }
@@ -515,7 +514,6 @@ class MysqliDb {
         $statement->bind_param('s', $mail);
         $statement->execute();
         $result = $statement->get_result();
-        $mysqli->close();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
             return $row;
         }
@@ -544,8 +542,6 @@ class MysqliDb {
         $statement->bind_param('s', $ci);
         $statement->execute();
         $result = $statement->get_result();
-        $mysqli->close();
-        //var_dump('ci=' . $ci);
         while ($row = $result->fetch_array(MYSQLI_NUM)) {            
             return $row;
         }
@@ -573,8 +569,6 @@ class MysqliDb {
         $statement->bind_param('ss', $usr,$pwd);
         $statement->execute();
         $result = $statement->get_result();
-        $mysqli->close();
-        //var_dump('ci=' . $ci);
         while ($row = $result->fetch_array(MYSQLI_NUM)) {            
             return $row;
         }
@@ -597,8 +591,6 @@ class MysqliDb {
         $statement->bind_param('sss', $usr,$pwd,$usr);
         $statement->execute();
         $result = $statement->get_result();
-        $mysqli->close();
-        //var_dump('ci=' . $ci);
         while ($row = $result->fetch_array(MYSQLI_NUM)) {            
             return $row;
         }
@@ -609,14 +601,13 @@ class MysqliDb {
     /* SERVICIOS */
     public function servicio_findByName($name) {
         $mysqli = $this->getConnection();
-        $statement = $mysqli->prepare("SELECT id_servicio,nombre,descripcion FROM tbl_servicios WHERE nombre = ?");
+        $statement = $mysqli->prepare("SELECT id_servicio,nombre,descripcion,habilitado FROM tbl_servicios WHERE nombre = ?");
         if ($statement === false) {
             trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
         }
         $statement->bind_param('s', $name);
         $statement->execute();
         $result = $statement->get_result();
-        $mysqli->close();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {
             return $row;
         }
@@ -627,14 +618,13 @@ class MysqliDb {
         $mysqli = $this->getConnection();
                 
         $statement = $mysqli->prepare("
-            select id_servicio,nombre,descripcion from tbl_servicios
+            select id_servicio,nombre,descripcion,habilitado from tbl_servicios
         ");
         if ($statement === false) {
             trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
         }
         $statement->execute();
         $result = $statement->get_result();
-        $mysqli->close();
         $servicios = array();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {            
             array_push($servicios , $row);
@@ -642,8 +632,35 @@ class MysqliDb {
         return $servicios;
     }
 
+    public function servicios_updateServicio($id,$nombre,$descripcion) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            update tbl_servicios set nombre = ?, descripcion = ? where id_servicio = ?
+        ");
+        if ($statement === false) {
+            trigger_error("[servicios_updateServicio] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('ssi', $nombre,$descripcion,$id);
+        return ($statement->execute());        
+    }
+
+    public function servicios_HabilitadoServicio($id,$habilitado) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            update tbl_servicios set habilitado = ? where id_servicio = ?
+        ");
+        if ($statement === false) {
+            trigger_error("[servicios_updateServicio] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('ii',$habilitado,$id);
+        return ($statement->execute());        
+    }
+
     /* FUNCIONES AUXILIARES */
     private function getConnection(){
+        /*
         $mysql_server = "localhost";
         $mysql_user = "root";
         $mysql_password = "ms_admin";
@@ -654,7 +671,8 @@ class MysqliDb {
             exit();
         }
         $mysqli->set_charset("utf8");
-        return $mysqli;
+        */
+        return $this->_mysqli;
     }
 
 }

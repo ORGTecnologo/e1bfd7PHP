@@ -137,3 +137,19 @@ function cerrarPanelAltaServicio(){
 	var div = $("#div_altaServicio");
 	div.hide();
 }
+
+
+$("body").on("click" , ".loadOnAdminWrapper", function(){
+	$("#wrapperGrillasAdministracion").load($(this).attr("id"));    
+});
+
+
+$("body").on("click" , ".deshabilitarServicioAction", function(){
+	alertify.confirm("Seguro que desea deshabilitar el servicio?", function (e) {
+	    if (e) {
+	        // user clicked "ok"
+	    } else {
+	        // user clicked "cancel"
+	    }
+	});
+});
