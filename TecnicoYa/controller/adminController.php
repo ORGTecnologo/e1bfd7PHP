@@ -20,8 +20,15 @@
 			$this->registry->template->show('loginAdmin');		
 		}
 
-		public function get_agregarServicio() {
-			$this->registry->template->show('AgregarServicio');
+		public function agregarServicio() {
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				include __SITE_PATH . '/model/' . 'servicioModel.php';
+                $servicioModel = new servicioModel;
+                $result = $servicioModel->altaServicio($arguments["nombres"],$arguments["descripcion"]);
+			} else {
+				$this->registry->template->show('AgregarServicio');				
+			}
+			
 		}
 
 		public function login(){

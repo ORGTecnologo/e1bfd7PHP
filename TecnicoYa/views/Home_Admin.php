@@ -52,31 +52,13 @@
 			<div class="col-md-10">
 				<div class="container marketing" style="height: 75%">
 					<div class="row-fluid">
-						<div id="wrapperGrillasAdministracion" class="span8" aling="center">
+						<div id="wrapperDivAdministracion" class="span8" aling="center">
 							
 						</div>
 					</div>
 				</div>
 			</div>
-			<!--
-				<div id="footer" class="footer">
-								<div class="container">
-												<p class="muted credit">
-													<div class="row-fluid">
-																				<center>
-																		<a>Tecnologo en Informática</a>
-																		-
-																		<a>Fing</a>
-																		-
-																		<a>UTU</a>
-																		-
-																		<a>Designed by Grupo 4</a>
-																	</center>
-												</div>
-												</p>
-								</div>
-				</div>
-			-->
+
 			<div hidden id="div_altaServicio" class="modalChocolate modal pelo" style="overflow-y: auto;display: block;width: 26%;min-width: 300px;margin-right: auto;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="cerrarPanelAltaServicio()">X</button>

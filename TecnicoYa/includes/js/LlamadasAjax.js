@@ -93,5 +93,5 @@ function altaServicio(nombre, descripcion) {
 }
 
 function gestionServicios(){
-    $("#wrapperGrillasAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=admin/obtenerTodosServicios");    
+    $("#wrapperDivAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=admin/obtenerTodosServicios");    
 }

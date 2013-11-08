@@ -60,7 +60,6 @@
 			$route = (empty($_GET['rt'])) ? '' : $_GET['rt'];
 			if (empty($route))
 				$route = (empty($_POST['rt'])) ? '' : $_POST['rt'];
-
 			if (empty($route))
 			{
 					$route = 'index';
