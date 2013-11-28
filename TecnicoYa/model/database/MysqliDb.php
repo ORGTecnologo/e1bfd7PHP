@@ -632,6 +632,20 @@ class MysqliDb {
         return $servicios;
     }
 
+    public function servicios_getById($id){
+        $mysqli = $this->getConnection();                
+        $statement = $mysqli->prepare("
+            select id_servicio,nombre,descripcion,habilitado from tbl_servicios where id_servicio=?
+        ");
+        if ($statement === false) {
+            trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('i',$id);
+        $statement->execute();
+        $result = $statement->get_result();        
+        return $result->fetch_assoc();
+    }
+
     public function servicios_updateServicio($id,$nombre,$descripcion) {
         $mysqli = $this->getConnection();
                 
@@ -645,7 +659,7 @@ class MysqliDb {
         return ($statement->execute());        
     }
 
-    public function servicios_HabilitadoServicio($id,$habilitado) {
+    public function servicios_updateEstadoServicio($id,$habilitado) {
         $mysqli = $this->getConnection();
                 
         $statement = $mysqli->prepare("

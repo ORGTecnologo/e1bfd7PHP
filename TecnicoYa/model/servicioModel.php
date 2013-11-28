@@ -51,19 +51,22 @@ class servicioModel {
         return $ok;
     }
 
-    public function hablitarServicio($id){
+    public function cambiarEstadoServicio($id){
         require_once('database/MysqliDb.php');
         $db = MysqliDb::getInstance();  
-        $habilitado = 0;
-        $ok = $db->servicios_updateServicio($id,$habilitado);
+        $ser = $db->servicios_getById($id);
+        //var_dump($ser["habilitado"]);
+        $habilitado = ($ser["habilitado"] == 0 ? 1 : 0);     
+        $ok = $db->servicios_updateEstadoServicio($id,$habilitado);
         return $ok;
     }
 
     public function deshablitarServicio($id){
         require_once('database/MysqliDb.php');
         $db = MysqliDb::getInstance();  
+
         $habilitado = 0;
-        $ok = $db->servicios_updateHabilitarServicio($id,$habilitado);
+        $ok = $db->servicios_updateEstadoServicio($id,$habilitado);
         return $ok;
     }
 

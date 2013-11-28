@@ -20,7 +20,3 @@ html, body, #map-canvas {
 .hidden {
 	visibility: hidden;
 }
-
-#loginUsuarioAdministrador{
-	background-color: lightsteelblue;
-}

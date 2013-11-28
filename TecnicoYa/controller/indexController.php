@@ -10,6 +10,12 @@
 				$this->registry->template->show('index');
 		}
 
+		public function mensajeOperacion(){
+			$this->registry->template->mensaje = $_GET["mensaje"];
+			$this->registry->template->operacion = $_GET["operacion"];
+			$this->registry->template->show('mensaje_operacion');
+		}
+
 	}
 
 ?>

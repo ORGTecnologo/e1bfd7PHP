@@ -1,10 +1,9 @@
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="includes/css/bootstrap-responsive.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/market.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/jquery-ui.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.core.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.default.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="includes/css/tecnico-ya.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/adminStyles.css" media="screen" />
 <body>
 	<div class="row-fluid">
 		<div id="loginUsuarioAdministrador" class="span4 offset4">
@@ -16,7 +15,7 @@
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-md-12" style="margin-left: auto;margin-right: auto;">
-							<h4>Datos de Usuario</h4>
+							<h4>Datos de administrador</h4>
 							<p>Correo               <input name="usuario" type="text" class="col-md-12 form-control" id="loginCorreo"></p>
 							<p>Contrase&ntilde;a    <input name="contrasenia" type="password" class="col-md-12 form-control" id="loginPass"></p>
 						</div>

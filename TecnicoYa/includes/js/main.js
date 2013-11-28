@@ -140,8 +140,9 @@ function cerrarPanelAltaServicio(){
 
 
 $("body").on("click" , ".loadOnAdminWrapper", function(){
-	var url = $(this).attr("id");
-	$("#wrapperDivAdministracion").load(url);    
+	event.preventDefault();
+	var url = $(this).attr("href");
+	$("#wrapperDivAdministracion").load(url); 	   
 });
 
 
