@@ -39,8 +39,10 @@
 			$authOk = $usuarioModel->loginAdmin($usuario,$contrasenia);
 			if ($authOk)
 				$this->registry->template->show('admin');
-			else
+			else{
+				$this->registry->template->error = "Usuario o contraseña incorrectos";
 				$this->registry->template->show('loginAdmin');
+			}
 		}
 
 		public function obtenerTodosServicios(){
