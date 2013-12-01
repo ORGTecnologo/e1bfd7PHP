@@ -4,8 +4,8 @@
 		<div class="row">
 			<div class="col-md-12" style="margin-left: auto;margin-right: auto;">
 				<h4>Datos de servicio</h4>
-				<p>Nombre               <input name="nombre" type="text" class="col-md-12 form-control"></p>
-				<p>Descripcion    		<input name="descripcion" type="text" class="col-md-12 form-control"></p>
+				<p>Nombre               <input value="<?php $nombre ?>" name="nombre" type="text" class="col-md-12 form-control"></p>
+				<p>Descripcion    		<input value="<?php $descripcion ?>" name="descripcion" type="text" class="col-md-12 form-control"></p>
 			</div>
 		</div>
 		<div class="row">

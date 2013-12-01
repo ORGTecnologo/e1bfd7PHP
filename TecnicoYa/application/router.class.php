@@ -132,6 +132,7 @@
 				$action = $this->action;
 			}
 			/*** run the action ***/
+			
 			$controller->$action();
 		}
 	}

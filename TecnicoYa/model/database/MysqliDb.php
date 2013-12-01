@@ -75,7 +75,9 @@ class MysqliDb {
             $port = ini_get('mysqli.default_port');
 
         $this->_mysqli = new mysqli($host, $username, $password, $db, $port) or die('There was a problem connecting to the database');
-
+        if($this->_mysqli->connect_errno > 0){ 
+            die('Unable to connect to database [' . $_mysqli->connect_error . ']');
+        }   
         $this->_mysqli->set_charset('utf8');
 
         self::$_instance = $this;
@@ -672,21 +674,73 @@ class MysqliDb {
         return ($statement->execute());        
     }
 
+    public function paises_getTodos() {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select id_pais as 'id_pais',nombre_pais as 'nombre_pais' from tbl_paises
+        ");
+        if ($statement === false) {
+            trigger_error("[paises_getAll] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->execute();
+        $result = $statement->get_result();
+        $paises = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($paises , $row);
+        }
+        return $paises;
+    }
+
     /* FUNCIONES AUXILIARES */
     private function getConnection(){
-        /*
-        $mysql_server = "localhost";
-        $mysql_user = "root";
-        $mysql_password = "ms_admin";
-        $mysql_db = "tecnico_ya_database";
-        $mysqli = new mysqli($mysql_server, $mysql_user, $mysql_password, $mysql_db);
-        if ($mysqli->connect_errno) {
-            printf("Connection failed: %s \n", $mysqli->connect_error);
-            exit();
-        }
-        $mysqli->set_charset("utf8");
-        */
         return $this->_mysqli;
+    }
+
+    public function paises_updatePais($id,$nombre) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            update tbl_paises set nombre_pais = ? where id_pais = ?
+        ");
+        if ($statement === false) {
+            trigger_error("[paises_updatePais] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('si', $nombre,$id);
+        return ($statement->execute());        
+    }
+
+    public function paises_findByName($name) {
+        $mysqli = $this->getConnection();
+        $statement = $mysqli->prepare("SELECT id_pais,nombre_pais FROM tbl_paises WHERE nombre_pais = ?");
+        if ($statement === false) {
+            trigger_error("[paises_findByName] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('s', $name);
+        $statement->execute();
+        $result = $statement->get_result();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {
+            return $row;
+        }
+        return false;
+    }
+
+    public function deptos_getTodos() {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select d.id_departamento,d.nombre_departamento, p.id_pais, p.nombre_pais from tbl_departamentos d join tbl_paises p on (p.id_pais = d.fk_pais)
+        ");
+        if ($statement === false) {
+            trigger_error("[deptos_getAll] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->execute();
+        $result = $statement->get_result();
+        $paises = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($paises , $row);
+        }
+        return $paises;
     }
 
 }

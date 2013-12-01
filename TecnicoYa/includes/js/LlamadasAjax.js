@@ -93,5 +93,13 @@ function altaServicio(nombre, descripcion) {
 }
 
 function gestionServicios(){
-    $("#wrapperDivAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=admin/obtenerTodosServicios");    
+    $("#wrapperDivAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=listados/obtenerTodosServicios");    
+}
+
+function gestionPaises(){
+    $("#wrapperDivAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=listados/obtenerTodosPaises");    
+}
+
+function gestionDepartamentos(){
+    $("#wrapperDivAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=listados/obtenerTodosDepartamentos");    
 }

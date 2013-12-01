@@ -33,8 +33,8 @@ class servicioModel {
         if (strcmp($respuesta['resultado'], 'FALLA'))
             $respuesta['errores'] = $errs;
 
-        $json_response = json_encode($respuesta);
-        return $json_response;
+        //$json_response = json_encode($respuesta);
+        return $respuesta;
     }
 
     public function obtenerTodosServicios(){        

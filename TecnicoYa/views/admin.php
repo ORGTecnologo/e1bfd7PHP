@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="includes/css/market.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.core.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.default.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/bootstrap-select.css" media="screen" />
 <script src="includes/js/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
@@ -44,10 +45,10 @@
 				  		<a role="menuitem" tabindex="-1" href="#" onclick="gestionServicios()">Servicios</a>
 				  	</li>
 				  	<li role="presentation">
-				  		<a role="menuitem" tabindex="-1" href="#">Países</a>
+				  		<a role="menuitem" tabindex="-1" href="#" onclick="gestionPaises()">Países</a>
 				  	</li>
 				  	<li role="presentation">
-				  		<a role="menuitem" tabindex="-1" href="#">Departamentos</a>
+				  		<a role="menuitem" tabindex="-1" href="#" onclick="gestionDepartamentos()">Departamentos</a>
 				  	</li>
 				  	<li role="presentation">
 				  		<a role="menuitem" tabindex="-1" href="#">Localidades</a>
@@ -90,6 +91,7 @@
 	<script src="includes/js/LlamadasAjax.js"></script>
 	<script src="includes/js/main.js"></script>
 	<script src="includes/js/alertify.min.js"></script>
+	<script src="includes/js/bootstrap-select.js"></script>
 
 	<?php
 		if (isset($nextAccion)){
