@@ -12,7 +12,7 @@
 	<body>
 		<div class="row-fluid">
 			<div id="loginUsuarioAdministrador" class="span4 offset4">
-				<form action="/e1bfd7PHP/TecnicoYa/" method="post">
+				<form action="/e1bfd7PHP/TecnicoYa/?rt=admin/login" method="post">
 					<input class="hidden" name="rt" value="admin/login">
 					<div class="modal-header">
 						<h3>Login de administrador</h3>
