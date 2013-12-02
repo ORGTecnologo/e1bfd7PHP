@@ -21,12 +21,13 @@
 	</thead>
 	<tbody>
 		<?php
-			foreach ($lista_departamentos as &$valor) {
+			//var_dump($lista_localidades);
+			foreach ($lista_localidades as &$valor) {
 				echo 	'<tr>';
 				echo		'<td>' . $valor[1] . '</td>';
 				echo		'<td>' . $valor[3] . '</td>';
 				echo		'<td>' . $valor[5] . '</td>';
-				echo		'<td><a class="loadOnAdminWrapper" href="/e1bfd7PHP/TecnicoYa/?rt=admin/editarDepartamento&id=' . $valor[0] . '&idPais=' . $valor[2] . '&nombre=' . str_replace(" " , "+" , $valor[1]) . '"' . '>Editar</a></td>';
+				echo		'<td><a class="loadOnAdminWrapper" href="/e1bfd7PHP/TecnicoYa/?rt=admin/editarLocalidad&id=' . $valor[0] . '&idDepto=' . $valor[2] . '&nombre=' . str_replace(" " , "+" , $valor[1]) . '"' . '>Editar</a></td>';
 				echo	'</tr>';
 			}
 		?>

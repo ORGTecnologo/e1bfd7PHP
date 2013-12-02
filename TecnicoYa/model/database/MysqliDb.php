@@ -822,6 +822,19 @@ class MysqliDb {
         return $localidades;
     }
 
+    function localidades_updateLocalidad($id,$nombre,$idDepto){
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            update tbl_localidades set nombre_localidad = ?, fk_departamento = ? where id_localidad = ?
+        ");
+        if ($statement === false) {
+            trigger_error("[deptos_updatePais] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('sii', $nombre,$idDepto,$id);
+        return ($statement->execute());   
+    }
+
 
 
 }

@@ -18,6 +18,11 @@
 			</div>
 		</div>
 		<div class="row">
+			<?php 
+				if ( (isset($error)) && (!strcmp($error, "") == 0 ) ){
+					echo $error;					
+				}
+			?>
 		</div>
 	</div>
 	<div class="modal-footer">

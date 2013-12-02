@@ -33,7 +33,7 @@
 			include __SITE_PATH . '/model/' . 'ubicacionModel.php';
 			$ubicModel = new ubicacionModel;
 			$locs = $ubicModel->obtenerTodosLocalidades();
-			$this->registry->template->lista_departamentos = $locs;
+			$this->registry->template->lista_localidades = $locs;
 			$this->registry->template->show('listado_localidades');
 		}
 	
