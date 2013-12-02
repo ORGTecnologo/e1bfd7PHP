@@ -7,7 +7,10 @@
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.core.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.default.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap-select.css" media="screen" />
+
 <script src="includes/js/jquery.min.js"></script>
+<script src="includes/js/init.js"></script>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -51,7 +54,7 @@
 				  		<a role="menuitem" tabindex="-1" href="#" onclick="gestionDepartamentos()">Departamentos</a>
 				  	</li>
 				  	<li role="presentation">
-				  		<a role="menuitem" tabindex="-1" href="#">Localidades</a>
+				  		<a role="menuitem" tabindex="-1" href="#" onclick="gestionLocalidades()">Localidades</a>
 				  	</li>
 				  	<li role="presentation">
 				  		<a role="menuitem" tabindex="-1" href="#">Barrios</a>

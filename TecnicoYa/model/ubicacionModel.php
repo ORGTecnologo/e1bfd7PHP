@@ -33,6 +33,13 @@ class ubicacionModel {
         return $respuesta;
     }
 
+    public function modificarPais($id,$nombre){
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+        $ok = $db->paises_updatePais($id,$nombre);
+        return $ok;
+    }
+
     public function altaDepartamento($nombre,$idPais) {
 
         $respuesta = array();
@@ -60,25 +67,48 @@ class ubicacionModel {
         return $respuesta;
     }
 
+    public function modificarDepartamento($id,$nombre, $idPais){
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+        $ok = $db->deptos_updateDepartamento($id,$nombre, $idPais);
+        return $ok;
+    }
+
     public function obtenerTodosPaises(){        
         require_once('database/MysqliDb.php');
         $db = MysqliDb::getInstance();  
-        $paises = $db->paises_getTodos();
-        return $paises;
+        $resp = $db->paises_getTodos();
+        return $resp;
     }
 
     public function obtenerTodosDepartamentos(){
         require_once('database/MysqliDb.php');
         $db = MysqliDb::getInstance();  
-        $paises = $db->deptos_getTodos();
-        return $paises;
+        $resp = $db->deptos_getTodos();
+        return $resp;
     }
 
-    public function modificarPais($id,$nombre){
+    public function obtenerDeptosPorPais($idPais){
         require_once('database/MysqliDb.php');
         $db = MysqliDb::getInstance();  
-        $ok = $db->deptos_getTodos();
-        return $ok;
+        $resp = $db->deptos_getDeptosByPais($idPais);
+        return $resp;
+    }
+
+
+    public function obtenerLocalidadesPorDepto($idDepto){
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+        $resp = $db->localidades_getLocalidadesByDepto($idDepto);
+        return $resp;
+    }
+    
+
+    public function obtenerTodosLocalidades(){
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+        $resp = $db->localidades_getTodos();
+        return $resp;
     }
 
 }

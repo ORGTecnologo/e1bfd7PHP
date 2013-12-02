@@ -92,6 +92,55 @@ function altaServicio(nombre, descripcion) {
     })
 }
 
+function obtenerDepartamentosPorPais(idPaisInp) {
+    $.ajax({
+        url: ip + '/?rt=services',
+        type: 'GET',
+        data: JSON.stringify({
+            idPais: idPaisInp,
+            operation: 'obtenerDepartamentosPorPais'
+        }),
+        datatype: "json",
+        contentType: "application/json",
+    })
+    .done(function(msg) {
+        var msg = JSON.parse(msg);        
+        console.log(msg);
+        return msg;
+    })
+    .fail(function(msg) {
+        console.log(msg);
+    })
+}
+
+function obtenerTodosLosPaises(){
+    /*
+    metodo: GET
+    url: http://localhost/e1bfd7PHP/TecnicoYa/?rt=services&operation=getAllPaises
+    retorno: json;
+    */
+}
+
+function obtenerDeptosPorPais(){
+    /*
+    metodo: GET
+    url: http://localhost/e1bfd7PHP/TecnicoYa/?rt=services&operation=getDeptosPosPais&idPais=1
+    retorno: json;
+    */
+}
+
+function obtenerLocalidadesPorDepto(){
+    /*
+    metodo: GET
+    url: http://localhost/e1bfd7PHP/TecnicoYa/?rt=services&operation=getLocalidadesPosDepto&idDepto=2
+    retorno: json;
+    */
+}
+
+
+/* ACCIONES DEL MENÚ DE ADMINSITRACIÓN */
+
+
 function gestionServicios(){
     $("#wrapperDivAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=listados/obtenerTodosServicios");    
 }
@@ -102,4 +151,8 @@ function gestionPaises(){
 
 function gestionDepartamentos(){
     $("#wrapperDivAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=listados/obtenerTodosDepartamentos");    
+}
+
+function gestionLocalidades(){
+    $("#wrapperDivAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=listados/obtenerTodosLocalidades");    
 }

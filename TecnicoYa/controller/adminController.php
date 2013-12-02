@@ -38,8 +38,7 @@
                 }
 			} else {
 				$this->registry->template->show('alta_servicio');
-			}
-			
+			}			
 		}
 
 		public function agregarDepartamento() {
@@ -66,8 +65,7 @@
 			
 		}
 
-
-		public function editarDepartamento() {
+		public function agregarLocalidad() {
 			include __SITE_PATH . '/model/' . 'ubicacionModel.php';
             $ubicacionModel = new ubicacionModel;
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {				
@@ -80,6 +78,32 @@
                 } else {
             	  	$this->registry->template->nextAccion = "mensaje_operacion";
 					$this->registry->template->mensaje = "Departamento ingresado con éxito";
+					$this->registry->template->operacion = "gestionDepartamentos()";
+					$this->registry->template->show('admin');              	
+                }
+			} else {
+				$paises = $ubicacionModel->obtenerTodosPaises();
+				$this->registry->template->lista_paises = $paises;
+				$this->registry->template->show('alta_localidad');
+			}
+			
+		}
+
+
+		public function editarDepartamento() {
+			include __SITE_PATH . '/model/' . 'ubicacionModel.php';
+            $ubicacionModel = new ubicacionModel;
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {				
+                $result = $ubicacionModel->modificarDepartamento($_POST["id"],$_POST["nombre"],$_POST["idPais"]);
+                if (strcmp($result['resultado'], 'FALLA') == 0){
+					$this->registry->template->nombre = $_POST["nombre"];
+					$this->registry->template->idPais = $_POST["idPais"];
+					$this->registry->template->id = $_POST["id"];
+					$this->registry->template->error = $result['errores'][0];
+					$this->registry->template->show('editar_departamento');
+                } else {
+            	  	$this->registry->template->nextAccion = "mensaje_operacion";
+					$this->registry->template->mensaje = "Departamento modificado con éxito";
 					$this->registry->template->operacion = "gestionDepartamentos()";
 					$this->registry->template->show('admin');              	
                 }

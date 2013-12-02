@@ -76,6 +76,24 @@ class RestService {
                 $usuarioModel = new usuarioModel;
                 $usuarioModel->obtenerTodosLosUsuarios();
                 break;
+            case 'getAllPaises':
+                include __SITE_PATH . '/model/' . 'ubicacionModel.php';
+                $ubicacionModel = new ubicacionModel;
+                $resp = $ubicacionModel->obtenerTodosPaises();
+                echo json_encode($resp);
+                break;
+            case 'getDeptosPosPais':
+                include __SITE_PATH . '/model/' . 'ubicacionModel.php';
+                $ubicacionModel = new ubicacionModel;
+                $resp = $ubicacionModel->obtenerDeptosPorPais($arguments["idPais"]);
+                echo json_encode($resp);
+                break;
+            case 'getLocalidadesPosDepto':
+                include __SITE_PATH . '/model/' . 'ubicacionModel.php';
+                $ubicacionModel = new ubicacionModel;
+                $resp = $ubicacionModel->obtenerLocalidadesPorDepto($arguments["idDepto"]);
+                echo json_encode($resp);
+                break;
         }
     }
 

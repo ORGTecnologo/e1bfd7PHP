@@ -8,7 +8,7 @@
 				<p>Nombre               <input value="<?php echo $nombre ?>" name="nombre" type="text" class="col-md-12 form-control"></p>
 				<p>
 					País               
-					<select value="<?php $idPais ?>" name="idPais" class="selectpicker">
+					<select name="idPais" class="selectpicker">
 						<?php 
 							foreach ($lista_paises as &$valor) {
 								echo '<option value="' . $valor[0] . '">' . str_replace(" " , "+" , $valor[1]) . '</option>';

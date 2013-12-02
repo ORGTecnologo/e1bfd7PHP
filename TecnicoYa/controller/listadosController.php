@@ -28,6 +28,14 @@
 			$this->registry->template->lista_departamentos = $deps;
 			$this->registry->template->show('listado_departamentos');
 		}
+
+		public function obtenerTodosLocalidades(){
+			include __SITE_PATH . '/model/' . 'ubicacionModel.php';
+			$ubicModel = new ubicacionModel;
+			$locs = $ubicModel->obtenerTodosLocalidades();
+			$this->registry->template->lista_departamentos = $locs;
+			$this->registry->template->show('listado_localidades');
+		}
 	
 
 	}

@@ -736,12 +736,93 @@ class MysqliDb {
         }
         $statement->execute();
         $result = $statement->get_result();
-        $paises = array();
+        $deptos = array();
         while ($row = $result->fetch_array(MYSQLI_NUM)) {            
-            array_push($paises , $row);
+            array_push($deptos , $row);
         }
-        return $paises;
+        return $deptos;
     }
+
+    public function deptos_getDeptosByPais($idPais) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select d.id_departamento,d.nombre_departamento, p.id_pais, p.nombre_pais from tbl_departamentos d join tbl_paises p on (p.id_pais = d.fk_pais)
+            where p.id_pais = ?
+        ");
+        if ($statement === false) {
+            trigger_error("[deptos_getPorPais] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('i', $idPais);
+        $statement->execute();
+        $result = $statement->get_result();
+        $deptos = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($deptos , $row);
+        }
+        return $deptos;
+    }
+
+    
+
+    public function deptos_updateDepartamento($id,$nombre,$idPais) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            update tbl_departamentos set nombre_departamento = ?, fk_pais = ? where id_departamento = ?
+        ");
+        if ($statement === false) {
+            trigger_error("[deptos_updatePais] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('sii', $nombre,$idPais,$id);
+        return ($statement->execute());        
+    }
+
+    public function localidades_getTodos() {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select l.id_localidad, l.nombre_localidad, d.id_departamento, d.nombre_departamento,
+            p.id_pais, p.nombre_pais
+            from (tbl_paises p join tbl_departamentos d on (d.fk_pais = p.id_pais)) join
+            tbl_localidades l on (l.fk_departamento = d.id_departamento)
+        ");
+        if ($statement === false) {
+            trigger_error("[localidades_getAll] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->execute();
+        $result = $statement->get_result();
+        $localidades = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($localidades , $row);
+        }
+        return $localidades;
+    }
+
+    public function localidades_getLocalidadesByDepto($idDepto) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select l.id_localidad, l.nombre_localidad, d.id_departamento, d.nombre_departamento,
+            p.id_pais, p.nombre_pais
+            from (tbl_paises p join tbl_departamentos d on (d.fk_pais = p.id_pais)) join
+            tbl_localidades l on (l.fk_departamento = d.id_departamento)
+            where d.id_departamento = ?
+        ");
+        if ($statement === false) {
+            trigger_error("[localidades_getAllByDepto] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('i', $idDepto);
+        $statement->execute();
+        $result = $statement->get_result();
+        $localidades = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($localidades , $row);
+        }
+        return $localidades;
+    }
+
+
 
 }
 
