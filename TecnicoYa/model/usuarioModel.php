@@ -109,6 +109,13 @@
 			$json_response = json_encode($respuesta);                        
 			return $json_response;
 		}
+
+		function obtenerInfoDeUsuario($email){
+			require_once('database/MysqliDb.php');
+			$db = MysqliDb::getInstance();
+			$usr = $db->usuario_findByEmail($email);
+			return $usr;
+		}
 		
 	}
 

@@ -94,6 +94,11 @@ class RestService {
                 $resp = $ubicacionModel->obtenerLocalidadesPorDepto($arguments["idDepto"]);
                 echo json_encode($resp);
                 break;
+            case 'getInfoUsuario':
+                include __SITE_PATH . '/model/' . 'usuarioModel.php';
+                $usuarioModel = new usuarioModel;
+                $resp = $usuarioModel->obtenerInfoDeUsuario($arguments["email"]);
+                echo json_encode($resp);
         }
     }
 

@@ -506,7 +506,8 @@ class MysqliDb {
                 when exists( select * from tbl_usuarios u join tbl_administradores a on u.email = a.email) then 'usuario_administrador'
                 when exists( select * from tbl_usuarios u join tbl_tecnicos t on u.email = t.email) then 'usuario_tecnico'
                 else 'otro'
-            end as tipo_usuario
+            end as tipo_usuario,
+            ci,nombres,apellidos,celular,direccion,habilitado 
             from tbl_usuarios
             where email = ?
         ");
