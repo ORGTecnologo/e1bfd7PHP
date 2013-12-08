@@ -20,3 +20,8 @@ html, body, #map-canvas {
 .hidden {
 	visibility: hidden;
 }
+
+.errorDiv{
+	color: red;
+	font-weight: bold;	
+}

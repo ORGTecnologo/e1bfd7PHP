@@ -148,3 +148,11 @@ function gestionDepartamentos(){
 function gestionLocalidades(){
     $("#wrapperDivAdministracion").load("/e1bfd7PHP/TecnicoYa/?rt=listados/obtenerTodosLocalidades");    
 }
+
+function altaUsuario(){
+    $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=usuario/registroUsuario");    
+}
+
+function listadoServiciosPublicados(){
+    $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=listados/otenerTodosServiciosPublicados");    
+}

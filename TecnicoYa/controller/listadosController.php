@@ -36,6 +36,11 @@
 			$this->registry->template->lista_localidades = $locs;
 			$this->registry->template->show('listado_localidades');
 		}
+
+		public function otenerTodosServiciosPublicados(){
+
+			$this->registry->template->show('listado_servicios_publicados');	
+		}
 	
 
 	}

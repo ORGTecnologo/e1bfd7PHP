@@ -56,7 +56,7 @@ function errorControlVaciosFormularioRegistro() {
 
 	if(error0 || error1 || error2 || error3 || error4 || error5 || error6 || error7 || error8 || error9){
 		alert('Ha dejado campos sin completar!!!');
-		return true;
+		//return true;
 	}
 	else
 		return false;
@@ -145,6 +145,12 @@ $("body").on("click" , ".loadOnAdminWrapper", function(){
 	$("#wrapperDivAdministracion").load(url); 	   
 });
 
+$("body").on("click" , ".loadOnFrontEndWrapper", function(){
+	event.preventDefault();
+	var url = $(this).attr("href");
+	$("#wrapperFrontEnd").load(url); 	   
+});
+
 
 $("body").on("click" , ".deshabilitarServicioAction", function(){
 	alertify.confirm("Seguro que desea deshabilitar el servicio?", function (e) {
@@ -155,3 +161,21 @@ $("body").on("click" , ".deshabilitarServicioAction", function(){
 	    }
 	});
 });
+
+function verModales(id){
+
+	switch(id){
+		case 'registroUsuario':
+			if (varsProy.tipoRegistro == 'proveedor')
+				document.getElementById('sitioWeb_p').setAttribute('style','visibility: visible;');
+			else	
+				document.getElementById('sitioWeb_p').setAttribute('style','visibility: hidden;');
+		break;
+	}
+	
+	$('#'+id).modal({show:true})
+}
+
+function setRegistroTipo(tipo){
+	varsProy.tipoRegistro = tipo;
+}
