@@ -121,6 +121,24 @@ function obtenerDeptosPorPais(idPaisInp){
     })
 }
 
+function logOff(){
+    /*
+    metodo: GET
+    url: http://localhost/e1bfd7PHP/TecnicoYa/?rt=services&operation=getDeptosPosPais&idPais=1
+    retorno: json;
+    */
+    $.ajax({
+        url: '/e1bfd7PHP/TecnicoYa/?rt=usuario/logout',
+        type: 'GET',
+    })
+    .done(function(msg) {
+        window.location.href = "/e1bfd7PHP/TecnicoYa/?rt=index/index";
+    })
+    .fail(function(msg) {
+        alert("Error al desloguear");
+    })
+}
+
 function obtenerLocalidadesPorDepto(){
     /*
     metodo: GET
@@ -154,5 +172,24 @@ function altaUsuario(){
 }
 
 function listadoServiciosPublicados(){
-    $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=listados/otenerTodosServiciosPublicados");    
+
+    var tipoServicio = 1;
+    var likeServicio = "algo";
+    var url = "/e1bfd7PHP/TecnicoYa/?rt=listados/otenerTodosServiciosPublicados&tipoServicio=" + tipoServicio + "&likeServicio=" + likeServicio;
+
+    $("#wrapperFrontEnd").load(url);    
+}
+
+function misServicios(){
+    $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=usuario/verMisServicios");       
+}
+
+function contratarServicio(tecnico,idServicio){
+    console.log("tecnico: " + tecnico);
+    console.log("idServicio: " + idServicio);
+}
+
+function verMasDeServicioOfrecido(tecnico,idServicio){
+    console.log("tecnico: " + tecnico);
+    console.log("idServicio: " + idServicio);
 }

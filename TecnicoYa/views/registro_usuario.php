@@ -79,30 +79,30 @@
 						<div class="col-md-6">
 							<h4>Datos de Usuario</h4>
 							<input class="hidden" name="rt" value="usuario/registroUsuario">
-							<p>Correo    			<input name="correoElectronico" maxlength="44" type="email" class="col-md-12 form-control" id="inputCorreo"></p>
-							<p>Contrase&ntilde;a    <input name="contrasenia" maxlength="44" type="password" class="col-md-12 form-control" id="inputPass"></p>
-							<p>Nombre Usuario  		<input name="usuario" maxlength="44" type="text" class="col-md-12 form-control" id="inputNick"></p>
-							<p>Fecha de Nacimiento  <input name="fechaNacimiento" maxlength="44" type="text" class="col-md-12 form-control" id="inputFecha"></p>
-							<p>Cedula     			<input name="ci" maxlength="14" type="tel" class="col-md-12 form-control" id="inputCi" onkeypress="return onlyNumbersDano(event)"></p>
+							<p>Correo    			<input value="<?php echo $correoElectronico ?>" name="correoElectronico" maxlength="44" type="email" class="col-md-12 form-control" id="inputCorreo"></p>
+							<p>Contrase&ntilde;a    <input value="<?php echo $contrasenia ?>" name="contrasenia" maxlength="44" type="password" class="col-md-12 form-control" id="inputPass"></p>
+							<p>Nombre Usuario  		<input value="<?php echo $usuario ?>" name="usuario" maxlength="44" type="text" class="col-md-12 form-control" id="inputNick"></p>
+							<p>Fecha de Nacimiento  <input value="<?php echo $fechaNacimiento ?>" name="fechaNacimiento" maxlength="44" type="text" class="col-md-12 form-control" id="inputFecha"></p>
+							<p>Cedula     			<input value="<?php echo $ci ?>" name="ci" maxlength="14" type="tel" class="col-md-12 form-control" id="inputCi" onkeypress="return onlyNumbersDano(event)"></p>
 						</div>
 						<div class="col-md-6">
 							<h4>Mas Datos</h4>
-							<p>Nombres	 <input name="nombres" maxlength="100" type="text" class="col-md-12 form-control" id="inputNombre"></p>
-							<p>Apellidos <input name="apellidos" maxlength="100" type="text" class="col-md-12 form-control" id="inputApellido"></p>
+							<p>Nombres	 <input value="<?php echo $nombres ?>" name="nombres" maxlength="100" type="text" class="col-md-12 form-control" id="inputNombre"></p>
+							<p>Apellidos <input value="<?php echo $correoElectronico ?>" name="apellidos" maxlength="100" type="text" class="col-md-12 form-control" id="inputApellido"></p>
 							<p>Sexo
-							<select name="sexo" id="inputSexo" class="col-md-12 form-control">
+							<select value="<?php echo $sexo ?>" name="sexo" id="inputSexo" class="col-md-12 form-control">
 								<option value="masculino" selected>Hombre</option>
 								<option value="femenino">Mujer</option>
 							</select>
 							</p>
 							<p>Estoy aca para...
-							<select name="tipoUsuario" id="inputSexo" class="col-md-12 form-control">
+							<select value="<?php echo $tipoUsuario ?>" name="tipoUsuario" id="inputSexo" class="col-md-12 form-control">
 								<option value="usr_cliente" selected>Contratar servicios</option>
 								<option value="usr_tecnico">Ofrecer servicios</option>
 							</select>
 							</p>
-							<p>Direccion 			<input name="direccion" maxlength="500" type="text" class="col-md-12 form-control" id="inputDireccion"></p>
-							<p>Telefono Movil     	<input name="telefonoMovil" maxlength="9" type="tel" class="col-md-12 form-control" id="inputTel" onkeypress="return onlyNumbersDano(event)"></p>
+							<p>Direccion 			<input value="<?php echo $direccion ?>" name="direccion" maxlength="500" type="text" class="col-md-12 form-control" id="inputDireccion"></p>
+							<p>Telefono Movil     	<input value="<?php echo $telefonoMovil ?>" name="telefonoMovil" maxlength="9" type="tel" class="col-md-12 form-control" id="inputTel" onkeypress="return onlyNumbersDano(event)"></p>
 						</div>
 					</div>
 				</div>

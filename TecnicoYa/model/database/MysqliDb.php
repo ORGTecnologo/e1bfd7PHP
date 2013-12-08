@@ -675,6 +675,48 @@ class MysqliDb {
         return ($statement->execute());        
     }
 
+    public function servicios_obtenerTodosPorTecnico($tecnico){
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select * 
+            from (tbl_tecnicos t join tbl_tecnico_ofrece_servicio ts on t.email = ts.fk_tecnico) 
+            join tbl_servicios s on (s.id_servicio = ts.fk_servicio)
+            where t.email= ?
+        ");
+        if ($statement === false) {
+            trigger_error("[servicios_obtenerTodosPorTecnico] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('s', $tecnico);
+        $statement->execute();
+        $result = $statement->get_result();
+        $servs = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($servs , $row);
+        }
+        return $servs;
+    }
+
+    public function servicios_obtenerTodosOfrecidos(){
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select * 
+            from (tbl_usuarios t join tbl_tecnico_ofrece_servicio ts on t.email = ts.fk_tecnico) 
+            join tbl_servicios s on (s.id_servicio = ts.fk_servicio)
+        ");
+        if ($statement === false) {
+            trigger_error("[servicios_obtenerTodosOfrecidos] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->execute();
+        $result = $statement->get_result();
+        $servs = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($servs , $row);
+        }
+        return $servs;
+    }
+
     public function paises_getTodos() {
         $mysqli = $this->getConnection();
                 

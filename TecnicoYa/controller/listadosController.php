@@ -38,6 +38,10 @@
 		}
 
 		public function otenerTodosServiciosPublicados(){
+			include __SITE_PATH . '/model/' . 'servicioModel.php';
+			$servicioModel = new servicioModel;
+			$servicios = $servicioModel->obtenerServiciosOfrecidos();
+			$this->registry->template->lista_servicios = $servicios;
 
 			$this->registry->template->show('listado_servicios_publicados');	
 		}

@@ -70,10 +70,26 @@
         		}
 
 			} else {
+        			$this->registry->template->usuario = "";
+        			$this->registry->template->nombres = "";
+        			$this->registry->template->apellidos = "";
+        			$this->registry->template->sexo = "";
+        			$this->registry->template->fechaNacimiento = "";
+        			$this->registry->template->telefonoMovil = "";
+        			$this->registry->template->correoElectronico = "";
+        			$this->registry->template->ci = "";
+        			$this->registry->template->direccion = "";
+        			$this->registry->template->tipoUsuario = "";
+        			$this->registry->template->contrasenia = "";
 				$this->registry->template->show('registro_usuario');						
 			}
 		}
-	
+		
+
+		public function verMisServicios(){
+			
+			
+		}
 	
 	}
 

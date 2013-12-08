@@ -95,7 +95,7 @@
                 if (strcmp($tipoUsuario, "usr_cliente") == 0)                             
                 	$id_insertado1 = $db->insert("tbl_clientes", $insertData1);			
 				else 
-					$id_insertado1 = $db->insert("tbl_proveedores", $insertData1);			
+					$id_insertado1 = $db->insert("tbl_tecnicos", $insertData1);			
 				if ($id_insertado !== false && $id_insertado1 !== false)
 					$respuesta["resultado"] =  'OK';
 				else 

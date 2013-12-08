@@ -70,5 +70,19 @@ class servicioModel {
         return $ok;
     }
 
+    public function obtenerServiciosDeTecnico($tecnico){
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();
+        $servicios = $db->servicios_obtenerTodosPorTecnico($tecnico);
+        return $servicios;
+    }
+
+    public function obtenerServiciosOfrecidos(){
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();
+        $servicios = $db->servicios_obtenerTodosOfrecidos();
+        return $servicios;
+    }
+
 }
 ?>
