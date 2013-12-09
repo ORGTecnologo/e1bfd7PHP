@@ -105,7 +105,7 @@ class servicioModel {
 
         if (empty($respuesta)) {
             $insertData = array(
-                'fk_cliente' => $usr,
+                'fk_cliente' => $_SESSION["usuario"][1],
                 'fk_servicio' => $idServicio,
                 'fk_tecnico' => $serv['fk_tecnico'],
                 'precio_final_servicio' => $serv['precio_servicio'],
@@ -119,7 +119,7 @@ class servicioModel {
         if (strcmp($respuesta['resultado'], 'FALLA'))
             $respuesta['errores'] = $errs;
 
-        return $serv['fk_tecnico'] . $serv['precio_servicio'];//$respuesta['resultado'];
+        return $respuesta['resultado'];
     }
 }
 ?>

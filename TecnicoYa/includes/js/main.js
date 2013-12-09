@@ -181,11 +181,11 @@ function setRegistroTipo(tipo){
 }
 
 
-function contratarServicio(mailUsr,idServicio,tecnico){
+function contratarServicio(mailTecnico,idServicio,tecnico){
 
 	if (confirm("Esta seguro que desea contratar este servicio?")){
 		console.log("Confirmo");
-		confirmarcontratarServicio(mailUsr,idServicio,tecnico);
+		confirmarcontratarServicio(mailTecnico,idServicio,tecnico);
 	}
 	else{
 		console.log("Cancelo");

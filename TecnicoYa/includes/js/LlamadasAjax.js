@@ -94,6 +94,7 @@ function altaServicio(nombre, descripcion) {
 
 function confirmarcontratarServicio(mail,idServicio,tecnico){
 
+    //el mail es el del tecnico OJO
     $.ajax({
         url: ip + '/?rt=services',
         type: 'POST',
@@ -107,15 +108,12 @@ function confirmarcontratarServicio(mail,idServicio,tecnico){
         contentType: "application/json",
     })
     .done(function(msg) {
-        //var msg = JSON.parse(msg);
         console.log(msg);
-        if (msg.resultado == "OK"){
-            alertify.success("Servicio registrado correctamente");
-            //gestionServicios();
+        if (msg.contains('OK')){
+            alertify.success("Servicio contradado correctamente, el tecnico se pondra en contacto con ud a la brevedad!!");
         }
         else{
             alertify.error("Error al registrar servicio");
-            console.log('EXITO, SERVIDOR RESPONDE:  ' + msg);
         }
     })
     .fail(function(msg) {
