@@ -66,7 +66,7 @@
 							echo '    <li><a href="#" onclick="listarServiciosPendientesCliente()">Servicios pendientes</a></li>';
 						}
 						echo '    <li><a href="#" onclick="verPerfil()">Mi perfil</a></li>';
-						echo '    <li><a href="#">Ver mapa</a></li>';
+						echo '    <li><a href="#" onclick="verMapa()">Ver mapa</a></li>';
 						echo '    <li class="divider"></li>';
 						echo '    <li><a href="#" onclick="logOff()">Salir</a></li>';
 						echo '  </ul>';
