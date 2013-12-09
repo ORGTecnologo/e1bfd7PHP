@@ -48,3 +48,8 @@ html, body, #map-canvas {
 	overflow: hidden;
 	text-align: left;
 }
+
+.comboFeo{
+	width: 150;
+	height: 35;
+}

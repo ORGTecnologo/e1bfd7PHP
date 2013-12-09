@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-md-12" style="margin-left: auto;margin-right: auto;">
 				<h4>Datos de departamento</h4>
-				<p>Nombre               <input value="<?php $nombre ?>" name="nombre" type="text" class="col-md-12 form-control"></p>
+				<p>Nombre               <input name="nombre" type="text" class="col-md-12 form-control"></p>
 				<p>
 					País               
 					<select value="<?php $idPais ?>" name="idPais" class="selectpicker">

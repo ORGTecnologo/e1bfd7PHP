@@ -509,7 +509,7 @@ class MysqliDb {
                 when exists( select * from tbl_usuarios u join tbl_tecnicos t on u.email = t.email) then 'usuario_tecnico'
                 else 'otro'
             end as tipo_usuario,
-            ci,nombres,apellidos,celular,direccion,habilitado 
+            ci,nombres,apellidos,celular,direccion,habilitado,fecha_nacimiento,sexo 
             from tbl_usuarios
             where email = ?
         ");
@@ -987,7 +987,7 @@ class MysqliDb {
             trigger_error("[deptos_updatePais] - Error en sentencia sql", E_USER_ERROR);
         }
         $statement->bind_param('sii', $nombre,$idDepto,$id);
-        return ($statement->execute());   
+        return ($statement->execute());
     }
 
 

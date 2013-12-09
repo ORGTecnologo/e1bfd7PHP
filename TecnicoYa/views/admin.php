@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.core.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.default.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap-select.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/tecnico-ya.css" media="screen" />
 
 <script src="includes/js/jquery.min.js"></script>
 <script src="includes/js/init.js"></script>

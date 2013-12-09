@@ -84,6 +84,14 @@
 					$this->registry->template->show('registro_usuario');						
 			}
 		}
+
+		public function perfilUsuario(){
+			include __SITE_PATH . '/model/' . 'usuarioModel.php';
+        	$usuarioModel = new usuarioModel;
+			$usr = $usuarioModel->obtenerInfoDeUsuario($_SESSION["usuario"][1]);
+			$this->registry->template->usr = $usr;
+			$this->registry->template->show('perfil');
+		}
 		
 
 		public function verMisServicios(){

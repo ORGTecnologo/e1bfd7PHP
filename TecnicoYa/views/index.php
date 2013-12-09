@@ -65,7 +65,7 @@
 						if (strcmp($usr[2] , "usuario_cliente") == 0){
 							echo '    <li><a href="#" onclick="listarServiciosPendientesCliente()">Servicios pendientes</a></li>';
 						}
-						echo '    <li><a href="#">Mi perfil</a></li>';
+						echo '    <li><a href="#" onclick="verPerfil()">Mi perfil</a></li>';
 						echo '    <li><a href="#">Ver mapa</a></li>';
 						echo '    <li class="divider"></li>';
 						echo '    <li><a href="#" onclick="logOff()">Salir</a></li>';

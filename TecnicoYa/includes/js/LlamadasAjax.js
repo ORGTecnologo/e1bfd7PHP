@@ -243,6 +243,10 @@ function listarServiciosPendientesTecnico(){
     $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=usuario/listarServiciosPendientes&estado=todas");    
 }
 
+function verPerfil(){
+    $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=usuario/perfilUsuario");    
+}
+
 function listadoServiciosPublicados(){
 
     var tipoServicio = $("#cmbFiltroTipoServicio").val();

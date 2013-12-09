@@ -4,10 +4,10 @@
 		<div class="row">
 			<div class="col-md-12" style="margin-left: auto;margin-right: auto;">
 				<h4>Datos de localidad</h4>
-				<p>Nombre               <input value="<?php echo $nombre ?>" name="nombre" type="text" class="col-md-12 form-control"></p>
+				<p>Nombre               <input name="nombre" type="text" class="col-md-12 form-control"></p>
 				<p>
 					País               
-					<select id="cmbPaisesUpdDptos" value="<?php $idPais ?>" name="idPais" > <!-- class="selectpicker" -->
+					<select id="cmbPaisesUpdDptos" value="<?php $idPais ?>" name="idPais" class="comboFeo">
 						<?php 
 							foreach ($lista_paises as &$valor) {
 								echo '<option class="paisUpdDept" value="' . $valor[0] . '">' . $valor[1] . '</option>';
@@ -17,7 +17,7 @@
 				</p>
 				<p>
 					Departamento               
-					<select id="cmbDeptosUpdLocs" value="<?php $idPais ?>" name="idDepto">
+					<select id="cmbDeptosUpdLocs" value="<?php $idPais ?>" name="idDepto" class="comboFeo">
 						
 					</select>
 				</p>
