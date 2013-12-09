@@ -7,9 +7,9 @@
 	$servicios = $lista_servicios;
 	//var_dump($servicios);
 	foreach ($servicios as &$valor) {
-    	echo '<div class="itemListaServicios col-md-3" style="margin: 1em;">';
-    	echo 	'<div>';
-    	echo 	'<img src="' . $valor[16] . '" height=150/ class="img-thumbnail img-circle" style="max-width: 200px;max-height: 200px;">';
+    	echo '<div class="itemListaServicios col-sm-5 col-md-3" style="margin: 1em;">';
+    	echo 	'<div class="thumbnail">';
+    	echo 	'<img src="' . $valor[16] . '" height=150/ class="img-thumbnail img-responsive" style="width: 200px;height: 200px;">';
     	echo 	'</div>';
     	echo '<div class="datosItemListaServicios">';
     	echo 	'<p class="tituloTipoServ">' . $valor[18]  . '</p>';

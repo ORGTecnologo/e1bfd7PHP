@@ -2,7 +2,7 @@
 <div class="col-md-12">
 	<form action="/e1bfd7PHP/TecnicoYa/" method="post" enctype="multipart/form-data">
 		<div class="col-md-12 separador"></div>
-		<div id="loginUsuario" style="overflow-y: auto;display: block;width: 50%;min-width: 300px;margin-right: auto;margin-left: auto;">
+		<div style="overflow-y: auto;display: block;width: 50%;min-width: 300px;margin-right: auto;margin-left: auto;background-color: beige;">
 			<input class="hidden" name="rt" value="usuario/ofrecerNuevoServicio">
 			<div class="modal-header">
 				<h3>Ofrecer nuevo servicio</h3>
