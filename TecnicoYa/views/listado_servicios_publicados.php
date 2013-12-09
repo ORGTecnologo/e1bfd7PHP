@@ -18,8 +18,10 @@
     	echo 	'<p style="color: green;">$' . $valor[15]  . '</p>';
     	echo '</div>';
         echo '<div class="conteiner" style="margin-bottom: inherit;text-align: right;">';
-    	echo '<button class="btn btn-primary" style="margin-right: 0.5em;" onclick="contratarServicio(' . '\'' . $valor[0] . '\'' . ',' . $valor[17]  . ',' . '\'' . $valor[2] . '\'' . ')">Contratar</button>';
-    	echo '<button class="btn btn-info" onclick="verMasDeServicioOfrecido(' . '\'' . $valor[0] . '\'' . ',' . $valor[17]  . ')">Ver mas..</button>';
+        if (isset($_SESSION["usuario"]) && (strcmp($_SESSION["usuario"][2] , "usuario_cliente") == 0)){
+    	   echo '<button class="btn btn-primary" style="margin-right: 0.5em;" onclick="contratarServicio(' . '\'' . $valor[0] . '\'' . ',' . $valor[17]  . ',' . '\'' . $valor[2] . '\'' . ')">Contratar</button>';
+    	}
+        echo '<button class="btn btn-info" onclick="verMasDeServicioOfrecido(' . '\'' . $valor[0] . '\'' . ',' . $valor[17]  . ')">Ver mas..</button>';
         echo '</div>';
     	echo '</div>';
 	}

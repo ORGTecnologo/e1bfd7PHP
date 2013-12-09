@@ -768,6 +768,24 @@ class MysqliDb {
         return (empty($servs) ? false : $servs);
     }
 
+    public function servicios_ofrecidoPorUsuarioYServicioExtendido($tecnico,$idServicio){
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select * 
+            from (tbl_tecnico_ofrece_servicio tos join tbl_usuarios u on u.email = tos.fk_tecnico)
+            join tbl_servicios s on s.id_servicio = tos.fk_servicio
+            where tos.fk_tecnico = ? and tos.fk_servicio = ?
+        ");
+        if ($statement === false) {
+            trigger_error("[servicios_obtenerTodosOfrecidos] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('si', $tecnico,$idServicio);
+        $statement->execute();
+        $result = $statement->get_result();        
+        return $result->fetch_assoc();
+    }
+
     public function servicios_pendientesDeTecnico($tecnico,$estado){
         $mysqli = $this->getConnection();
        $baseQuery = "

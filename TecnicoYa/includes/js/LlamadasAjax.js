@@ -275,5 +275,6 @@ function contratarServicio(tecnico,idServicio){
 function verMasDeServicioOfrecido(tecnico,idServicio){
     console.log("tecnico: " + tecnico);
     console.log("idServicio: " + idServicio);
+    $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=usuario/verInfoServicioOfrecido&tecnico=" + tecnico + "&idServicio=" + idServicio);
 }
 

@@ -19,6 +19,7 @@
 			<th>Fecha de contrato</th>
 			<th>Precio fijado</th>
 			<th>Estado</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,6 +34,7 @@
 					echo		'<td>' . $valor[5] . '</td>';
 					echo		'<td>$' . $valor[4] . '</td>';
 					echo		'<td>' . $valor[12] . '</td>';
+					echo		'<td> ' . (strcmp($valor[12], 'pendiente') !== 0 ? '' : '<a href="#"><img title="calificar" src="includes/img/calificar.jpg"></a>') . '</td>';
 					echo	'</tr>';
 				}
 			}

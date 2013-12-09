@@ -184,6 +184,14 @@
 
 			}
 		}
+
+		public function verInfoServicioOfrecido(){
+			include __SITE_PATH . '/model/' . 'servicioModel.php';
+			$servicioModel = new servicioModel;
+			$serv = $servicioModel->verInfoServicioOfrecido($_GET["tecnico"],$_GET["idServicio"]);
+			$this->registry->template->serv = $serv;
+			$this->registry->template->show('ver_info_servicio_ofrecido');
+		}
 	
 	}
 

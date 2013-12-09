@@ -196,7 +196,13 @@ class servicioModel {
         return $resp;
     }
 
-
+    function verInfoServicioOfrecido($tecnico,$idServicio) {
+        require_once('database/MysqliDb.php');
+        $resp = array();
+        $db = MysqliDb::getInstance();
+        $resp = $db->servicios_ofrecidoPorUsuarioYServicioExtendido($tecnico,$idServicio);
+        return $resp;
+    }
 
 
 }
