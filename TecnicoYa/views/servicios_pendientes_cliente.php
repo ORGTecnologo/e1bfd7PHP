@@ -25,7 +25,7 @@
 	<tbody>
 		<?php
 			$srvs = $lista_servicios;
-			//var_dump($srvs);
+			
 			if ($srvs !== false){
 				foreach ($srvs as &$valor) {
 					echo 	'<tr>';
@@ -34,10 +34,11 @@
 					echo		'<td>' . $valor[5] . '</td>';
 					echo		'<td>$' . $valor[4] . '</td>';
 					echo		'<td>' . $valor[12] . '</td>';
-					echo		'<td> ' . (strcmp($valor[12], 'pendiente') !== 0 ? '' : '<a href="#"><img title="calificar" src="includes/img/calificar.jpg"></a>') . '</td>';
+					echo		'<td> ' . (strcmp($valor[12], 'pendiente') !== 0 ? '' : '<a class="loadOnFrontEndWrapper" href="/e1bfd7PHP/TecnicoYa/?rt=usuario/calificarATecnico&idContrato=' . $valor[0] . '&tecNombre=' .$valor[32].'&tecMail=' .$valor[30].'&servNombre='.str_replace(" " , "+" , $valor[14]).'"><img title="calificar" src="includes/img/calificar.jpg"></a>') . '</td>';
 					echo	'</tr>';
 				}
 			}
+			//var_dump($srvs);
 		?>
 	</tbody>
 </table>

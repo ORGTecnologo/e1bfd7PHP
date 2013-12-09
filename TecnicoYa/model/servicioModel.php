@@ -204,6 +204,22 @@ class servicioModel {
         return $resp;
     }
 
+    function calificarCliente($idContrato,$calificacion){
+        require_once('database/MysqliDb.php');
+        $resp = array();
+        $db = MysqliDb::getInstance();
+        $resp = $db->servicios_calificarCliente($idContrato,$calificacion);
+        return $resp;
+    }
+
+    function calificarTecnico($idContrato,$calificacion){
+        require_once('database/MysqliDb.php');
+        $resp = array();
+        $db = MysqliDb::getInstance();
+        $resp = $db->servicios_calificarTecnico($idContrato,$calificacion);
+        return $resp;
+    }
+
 
 }
 ?>

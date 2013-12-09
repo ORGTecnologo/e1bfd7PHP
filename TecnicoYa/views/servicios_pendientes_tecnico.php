@@ -31,6 +31,7 @@
 				echo		'<td>' . $valor[5] . '</td>';
 				echo		'<td>$' . $valor[4] . '</td>';
 				echo		'<td>' . $valor[12] . '</td>';
+				echo		'<td> ' . (strcmp($valor[12], 'pendiente') !== 0 ? '' : '<a class="loadOnFrontEndWrapper" href="/e1bfd7PHP/TecnicoYa/?rt=usuario/calificarACliente&idContrato=' . $valor[0] . '&cliNombre=' .$valor[19].'&cliMail=' .$valor[17].'&servNombre='.str_replace(" " , "+" , $valor[14]).'"><img title="calificar" src="includes/img/calificar.jpg"></a>') . '</td>';
 				echo	'</tr>';
 			}
 		?>

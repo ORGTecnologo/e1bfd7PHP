@@ -192,6 +192,42 @@
 			$this->registry->template->serv = $serv;
 			$this->registry->template->show('ver_info_servicio_ofrecido');
 		}
+
+		public function calificarATecnico(){
+			if ($_SERVER['REQUEST_METHOD'] === 'GET') {	
+				$this->registry->template->nombreTecnico = $_GET["tecNombre"];
+				$this->registry->template->mailTecnico = $_GET["tecMail"];
+				$this->registry->template->nombreSerivico = $_GET["servNombre"];
+				$this->registry->template->idContrato = $_GET["idContrato"];
+				$this->registry->template->show('calificar_tecnico');
+			} else {
+				include __SITE_PATH . '/model/' . 'servicioModel.php';
+				$servicioModel = new servicioModel;
+				$serv = $servicioModel->calificarTecnico($_POST["idContrato"],$_POST["calificacion"]);
+				$this->registry->template->nextAccion = "mensaje_operacion";
+				$this->registry->template->mensaje = "Calificación enviada con éxito, muchas gracias!";
+				$this->registry->template->operacion = "listarServiciosPendientesCliente()";
+				$this->registry->template->show('index');
+			}
+		}
+
+		public function calificarACliente(){
+			if ($_SERVER['REQUEST_METHOD'] === 'GET') {	
+				$this->registry->template->nombreCliente = $_GET["cliNombre"];
+				$this->registry->template->mailCliente = $_GET["cliMail"];
+				$this->registry->template->nombreSerivico = $_GET["servNombre"];
+				$this->registry->template->idContrato = $_GET["idContrato"];
+				$this->registry->template->show('calificar_cliente');
+			} else {
+				include __SITE_PATH . '/model/' . 'servicioModel.php';
+				$servicioModel = new servicioModel;
+				$serv = $servicioModel->calificarCliente($_POST["idContrato"],$_POST["calificacion"]);
+				$this->registry->template->nextAccion = "mensaje_operacion";
+				$this->registry->template->mensaje = "Calificación enviada con éxito, muchas gracias!";
+				$this->registry->template->operacion = "listarServiciosPendientesTecnico()";
+				$this->registry->template->show('index');
+			}
+		}
 	
 	}
 

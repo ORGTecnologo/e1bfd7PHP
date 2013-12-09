@@ -951,6 +951,32 @@ class MysqliDb {
         return ($statement->execute());        
     }
 
+    public function servicios_calificarTecnico($idContrato,$calificacion){
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            update tbl_cliente_contrata_servicio set estado_contratacion = 'realizada',calificacion_otorgada_tecnico=? where id= ?
+        ");
+        if ($statement === false) {
+            trigger_error("[servicios_calificarTecnico] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('ii', $calificacion,$idContrato);
+        return ($statement->execute());        
+    }
+
+    public function servicios_calificarCliente($idContrato,$calificacion){
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            update tbl_cliente_contrata_servicio set estado_contratacion = 'realizada',calificacion_otorgada_cliente=? where id= ?
+        ");
+        if ($statement === false) {
+            trigger_error("[servicios_calificarCliente] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('ii', $calificacion,$idContrato);
+        return ($statement->execute());        
+    }
+
     public function localidades_getTodos() {
         $mysqli = $this->getConnection();
                 
