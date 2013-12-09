@@ -27,7 +27,7 @@ html, body, #map-canvas {
 }
 
 .itemListaServicios{
-	background-color: rgb(212, 212, 208);
+	background-color: rgb(255, 255, 253);
 	max-width: 250;
 	min-height: 300;
 	border-radius: 10;
@@ -37,6 +37,14 @@ html, body, #map-canvas {
 
 .datosItemListaServicios{
 	text-align: left;
-	margin-left: 48;
-	margin-top: 10;
+/*	margin-left: 48;
+	margin-top: 10;*/
+}
+
+.tituloTipoServ{
+	font-family: cursive;
+	font-size: x-large;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-align: left;
 }

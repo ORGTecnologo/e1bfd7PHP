@@ -5,44 +5,42 @@
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.default.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/datepicker.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/tecnico-ya.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/themeProy.css" media="screen" />
+
 <script src="includes/js/jquery.min.js"></script>
 <script src="includes/js/LlamadasAjax.js"></script>
-<body>
+<body style="background-color: gainsboro;">
 	<head>
-		<meta charset="UTF-8">
-		<title>Tecnico Ya!</title>
+    <title>Tecnico Ya!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta name="description" content="Bienvenidos al Tecnico Ya, donde ecnotraras todo lo que te imagines y mas.">
 	</head>
-	<div class="container">
-	<nav class="navbar navbar-default " role="navigation">
-		<!-- El logotipo y el icono que despliega el menú se agrupan
-		para mostrarlos mejor en los dispositivos móviles -->
-		<div class="row">
-		<div class="col-md-2">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
+
+<!-- BARRA DE NAVEGACION -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
 			data-target=".navbar-ex1-collapse">
 			<span class="sr-only">Desplegar navegación</span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/e1bfd7PHP/TecnicoYa/?rt=index/index">Tecnico Ya</a>
-		</div>
-		</div>
-		<!-- Agrupar los enlaces de navegación, los formularios y cualquier
-		otro elemento que se pueda ocultar al minimizar la barra -->
-		<div class="col-md-5">
-		<input type="text" class="form-control" placeholder="Buscar">
-		</div>
-		<div class="col-md-1">
-		<button class="btn btn-primary barraBusquedaHome" style="margin-top: initial;">
-			<span class="glyphicon glyphicon-search">
-			</span> 
-			Buscar
 		</button>
+		<a class="navbar-brand" href="/e1bfd7PHP/TecnicoYa/?rt=index/index">Tecnico Ya</a>
 	</div>
-			
-			<div class="col-md-offset-1 col-md-3">                
+  <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+    <ul class="navbar-form navbar-left" role="search">
+		<div class="form-group col-xs-6">
+			<input id="input-busqueda" type="search" class="form-control input-md" placeholder="Buscar" style="height: initial;min-width: 25em;">
+		</div>
+		<ul class="btn-group">
+			<button onclick="" class="btn btn-primary" style="margin-top: initial;">
+				<span class="glyphicon glyphicon-search"></span> Buscar</button>
+		</ul>
+	</ul>
+    <ul class="nav navbar-nav navbar-right" id="Login-Registro-Div">
+		 <div class="col-md-offset-1 col-md-3">               
 				<?php
 					if (!isset($_SESSION["autenticado"]) || !$_SESSION["autenticado"]){
 						echo "<a href='/e1bfd7PHP/TecnicoYa/?rt=usuario/registroUsuario'><button class='btn btn-primary barraBusquedaHome'>Registrarme</button></a>";
@@ -66,8 +64,10 @@
 				?>
 			</div>
 		</div>
-	</nav>
-	<div id="wrapperFrontEnd">
+	</ul>
+</nav>
+
+	<div class="row" id="wrapperFrontEnd" style="margin-top:50px">
 
 
 	</div>
@@ -82,7 +82,6 @@
 			echo '<script>listadoServiciosPublicados()</script>';
 		}
 	?>
-</div>
 </body>
 
 <script src="includes/js/bootstrap-datepicker.js"></script>
