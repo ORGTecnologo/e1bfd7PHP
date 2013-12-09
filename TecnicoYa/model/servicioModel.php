@@ -119,7 +119,7 @@ class servicioModel {
         if (strcmp($respuesta['resultado'], 'FALLA'))
             $respuesta['errores'] = $errs;
 
-        return $respuesta;
+        return $serv['fk_tecnico'] . $serv['precio_servicio'];//$respuesta['resultado'];
     }
 }
 ?>
