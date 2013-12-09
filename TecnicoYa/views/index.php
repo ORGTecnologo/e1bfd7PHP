@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.default.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/datepicker.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/tecnico-ya.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="includes/css/bootstrap-select.css" media="screen" />
 <script src="includes/js/jquery.min.js"></script>
 <script src="includes/js/LlamadasAjax.js"></script>
 <body>
@@ -55,7 +56,7 @@
 						echo    $usr[0] . ' <span class="caret"></span>';
 					  	echo '	</button>';						 
 						echo '  <ul class="dropdown-menu" role="menu">';
-						echo '    <li><a href="#" onclick="registrarmeEnServicio()">Ofrecer servicio</a></li>';
+						echo '    <li><a href="#" onclick="ofrecerNuevoServicio()">Ofrecer servicio</a></li>';
 						echo '    <li><a href="#" onclick="misServicios()">Mis servicios</a></li>';
 						echo '    <li><a href="#">Ver mapa</a></li>';
 						echo '    <li class="divider"></li>';
@@ -91,3 +92,5 @@
 <script src="includes/js/main.js"></script>
 <script src="includes/js/alertify.min.js"></script>
 <script src="includes/js/objetos.js"></script>
+<script src="includes/js/bootstrap-select.js"></script>
+<script src="includes/js/tecnico-ya.js"></script>
