@@ -95,13 +95,41 @@
 			$this->registry->template->show('listado_mis_servicios');
 		}
 
+		function generateRandomString($length = 30) {
+		    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		    $randomString = '';
+		    for ($i = 0; $i < $length; $i++) {
+		        $randomString .= $characters[rand(0, strlen($characters) - 1)];
+		    }
+		    return $randomString;
+		}
+
 		public function ofrecerNuevoServicio(){
-			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+			include __SITE_PATH . '/model/' . 'servicioModel.php';
+			$servicioModel = new servicioModel;
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {				
 
-
+				$urlFoto = "includes/img_data/";
+				$nombreFoto = "sin_foto.jpg";
+				if($_FILES['foto']['name']){
+					$nombreFoto = $this->generateRandomString();
+					$urlFoto .= $nombreFoto . ".jpg";
+					move_uploaded_file($_FILES['foto']['tmp_name'], $urlFoto);
+				}
+				$tecnico = $_SESSION["usuario"][1];
+				$result = $servicioModel->ofrecerNuevoServicio($_POST["idServicio"], $_POST["precio"], $urlFoto, $tecnico);
+				if (strcmp($result["resultado"], "FALLA") == 0 ){
+					$servicios = $servicioModel->obtenerTodosServicios();
+					$this->registry->template->error = $servicios;			
+					$this->registry->template->error = $result['errores'][0];
+					$this->registry->template->show('ofrecer_nuevo_servicio');
+				} else {
+					$this->registry->template->nextAccion = "mensaje_operacion";
+					$this->registry->template->mensaje = "Servicio publicado con éxito";
+					$this->registry->template->operacion = "misServicios()";
+					$this->registry->template->show('index');
+				}
 			} else {
-				include __SITE_PATH . '/model/' . 'servicioModel.php';
-				$servicioModel = new servicioModel;
 				$servicios = $servicioModel->obtenerTodosServicios();
 				$this->registry->template->lista_servicios = $servicios;				
 				$this->registry->template->show('ofrecer_nuevo_servicio');

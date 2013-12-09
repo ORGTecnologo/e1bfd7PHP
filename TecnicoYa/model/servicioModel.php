@@ -30,7 +30,7 @@ class servicioModel {
             else
                 $respuesta['resultado'] = 'FALLA';
         }
-        if (strcmp($respuesta['resultado'], 'FALLA'))
+        if (strcmp($respuesta['resultado'], 'FALLA') == 0)
             $respuesta['errores'] = $errs;
 
         //$json_response = json_encode($respuesta);
@@ -83,6 +83,47 @@ class servicioModel {
         $servicios = $db->servicios_obtenerTodosOfrecidos();
         return $servicios;
     }
+
+    public function ofrecerNuevoServicio($idServicio, $precio, $urlFoto, $tecnico){
+        $respuesta = array();
+        $errs = array();
+        if (empty($precio))
+            array_push($errs, "Precio obligatorio");
+
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();
+        $servicios = $db->servicios_ofrecidoPorUsuarioYServicio($tecnico,$idServicio);
+
+        if ($servicios !== false)
+            array_push($errs, "Servicio ya ofrecido");
+        
+        if (empty($errs)){
+            $insertData = array(
+                'fk_tecnico' => $tecnico,
+                'fk_servicio' => $idServicio,
+                'precio_servicio' => $precio,
+                'ruta_imagen' => $urlFoto,
+            );
+            $id_insertado = $db->insert('tbl_tecnico_ofrece_servicio', $insertData);
+            if ($id_insertado !== false)
+                $respuesta['resultado'] = 'OK';
+            else
+                $respuesta['resultado'] = 'FALLA';
+
+
+        } else {
+            $respuesta['resultado'] = 'FALLA';
+        }
+
+        if (strcmp($respuesta['resultado'], 'FALLA') == 0){
+            $respuesta['errores'] = $errs;
+            $respuesta['resultado'] = "FALLA";
+        }
+
+        return $respuesta;
+
+    }
+
 
 }
 ?>

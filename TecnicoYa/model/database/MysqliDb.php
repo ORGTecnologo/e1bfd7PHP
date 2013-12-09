@@ -719,6 +719,25 @@ class MysqliDb {
         return $servs;
     }
 
+    public function servicios_ofrecidoPorUsuarioYServicio($tecnico,$idServicio){
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            select * from tbl_tecnico_ofrece_servicio where fk_tecnico = ? and fk_servicio = ?;
+        ");
+        if ($statement === false) {
+            trigger_error("[servicios_obtenerTodosOfrecidos] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('si', $tecnico,$idServicio);
+        $statement->execute();
+        $result = $statement->get_result();
+        $servs = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($servs , $row);
+        }
+        return (empty($servs) ? false : $servs);
+    }
+
     public function paises_getTodos() {
         $mysqli = $this->getConnection();
                 
