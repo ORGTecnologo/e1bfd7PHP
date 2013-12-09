@@ -182,7 +182,9 @@ function setRegistroTipo(tipo){
 
 
 function contratarServicio(mailTecnico,idServicio,tecnico){
-
+	console.log("mailTecnico=" + mailTecnico);
+	console.log("idServicio=" + idServicio);
+	console.log("tecnico=" + tecnico);
 	if (confirm("Esta seguro que desea contratar este servicio?")){
 		console.log("Confirmo");
 		confirmarcontratarServicio(mailTecnico,idServicio,tecnico);

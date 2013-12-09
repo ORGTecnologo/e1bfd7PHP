@@ -155,6 +155,27 @@
 				$this->registry->template->show('baja_de_servicio');
 			}
 		}
+
+		public function listarServiciosPendientes(){
+			if ($_SERVER['REQUEST_METHOD'] === 'GET') {	
+				$usr = $_SESSION["usuario"];
+				include __SITE_PATH . '/model/' . 'servicioModel.php';
+				$servicioModel = new servicioModel;
+
+				if (strcmp($usr[2] , "usuario_tecnico") == 0){
+					$servicios = $servicioModel->obtenerServiciosPendientesTecnico($usr[1],$_GET["estado"]);
+					$this->registry->template->lista_servicios = $servicios;	
+					$this->registry->template->estado = $_GET["estado"];
+					$this->registry->template->show('servicios_pendientes_tecnico');
+				} else {
+					$servicios = $servicioModel->obtenerServiciosPendientesCliente($usr[1],$_GET["estado"]);
+					$this->registry->template->lista_servicios = $servicios;
+					$this->registry->template->estado = $_GET["estado"];	
+					$this->registry->template->show('servicios_pendientes_cliente');
+				}
+
+			}
+		}
 	
 	}
 

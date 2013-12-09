@@ -557,14 +557,14 @@ class MysqliDb {
         $mysqli = $this->getConnection();
                 
         $statement = $mysqli->prepare("
-            select nick, email ,
+            select uP.nick, uP.email ,
             case 
-                when exists( select * from tbl_usuarios u join tbl_clientes c on u.email = c.email) then 'usuario_cliente'
-                when exists( select * from tbl_usuarios u join tbl_administradores a on u.email = a.email) then 'usuario_administrador'
-                when exists( select * from tbl_usuarios u join tbl_tecnicos t on u.email = t.email) then 'usuario_tecnico'
+                when exists( select * from tbl_usuarios u join tbl_clientes c on u.email = c.email where u.email = uP.email) then 'usuario_cliente'
+                when exists( select * from tbl_usuarios u join tbl_administradores a on u.email = a.email where u.email = uP.email) then 'usuario_administrador'
+                when exists( select * from tbl_usuarios u join tbl_tecnicos t on u.email = t.email where u.email = uP.email) then 'usuario_tecnico'
                 else 'otro'
             end as tipo_usuario
-            from tbl_usuarios
+            from tbl_usuarios uP
             where email = ? and contrasenia = ?
         ");
         //SELECT email,nick,contrasenia FROM tbl_usuarios WHERE ci = ?
@@ -721,10 +721,20 @@ class MysqliDb {
             from (tbl_usuarios t join tbl_tecnico_ofrece_servicio ts on t.email = ts.fk_tecnico) 
             join tbl_servicios s on (s.id_servicio = ts.fk_servicio) ";
 
+        $condTipo = false;
         if (strcmp($tipoServicio, "todos") !== 0){
+            $condTipo = true;
             $queryBase .= " where s.id_servicio = " . $tipoServicio;
         }
-                
+
+        if (!empty($likeTecnico)){
+            if ($condTipo == false){
+                $queryBase .= " where upper(t.nombres) like '%" . strtoupper($likeTecnico) . "%'";
+            } else {
+                $queryBase .= " and upper(t.nombres) like '%" . strtoupper($likeTecnico) . "%'";
+            }
+        }
+   
         $statement = $mysqli->prepare($queryBase);
         if ($statement === false) {
             trigger_error("[servicios_obtenerTodosOfrecidos] - Error en sentencia sql", E_USER_ERROR);
@@ -749,6 +759,54 @@ class MysqliDb {
             trigger_error("[servicios_obtenerTodosOfrecidos] - Error en sentencia sql", E_USER_ERROR);
         }
         $statement->bind_param('si', $tecnico,$idServicio);
+        $statement->execute();
+        $result = $statement->get_result();
+        $servs = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($servs , $row);
+        }
+        return (empty($servs) ? false : $servs);
+    }
+
+    public function servicios_pendientesDeTecnico($tecnico,$estado){
+        $mysqli = $this->getConnection();
+       $baseQuery = "
+            select * 
+            from ((tbl_cliente_contrata_servicio cnt join tbl_servicios s on cnt.fk_servicio = s.id_servicio)
+            join tbl_usuarios cl on cl.email = cnt.fk_cliente)
+            join tbl_usuarios tc on tc.email = cnt.fk_tecnico
+            where cnt.fk_tecnico = ? ";   
+        if (strcmp($estado, "todas") !== 0)
+            $baseQuery .= " and cnt.estado_contratacion = '" . $estado . "'";   
+        $statement = $mysqli->prepare($baseQuery);
+        if ($statement === false) {
+            trigger_error("[servicios_pendientesDeTecnico] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('s', $tecnico);
+        $statement->execute();
+        $result = $statement->get_result();
+        $servs = array();
+        while ($row = $result->fetch_array(MYSQLI_NUM)) {            
+            array_push($servs , $row);
+        }
+        return (empty($servs) ? false : $servs);
+    }
+
+    public function servicios_pendientesDeCliente($cliente,$estado){
+        $mysqli = $this->getConnection();
+        $baseQuery = "
+            select * 
+            from ((tbl_cliente_contrata_servicio cnt join tbl_servicios s on cnt.fk_servicio = s.id_servicio)
+            join tbl_usuarios cl on cl.email = cnt.fk_cliente)
+            join tbl_usuarios tc on tc.email = cnt.fk_tecnico
+            where cnt.fk_cliente = ? ";
+        if (strcmp($estado, "todas") !== 0)
+            $baseQuery .= " and cnt.estado_contratacion = '" . $estado . "'";
+        $statement = $mysqli->prepare($baseQuery);
+        if ($statement === false) {
+            trigger_error("[servicios_pendientesDeCliente] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('s', $cliente);
         $statement->execute();
         $result = $statement->get_result();
         $servs = array();

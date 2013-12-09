@@ -56,8 +56,16 @@
 						echo    $usr[0] . ' <span class="caret"></span>';
 					  	echo '	</button>';						 
 						echo '  <ul class="dropdown-menu" role="menu">';
-						echo '    <li><a href="#" onclick="ofrecerNuevoServicio()">Ofrecer servicio</a></li>';
-						echo '    <li><a href="#" onclick="misServicios()">Mis servicios</a></li>';
+
+						if (strcmp($usr[2] , "usuario_tecnico") == 0){
+							echo '    <li><a href="#" onclick="ofrecerNuevoServicio()">Ofrecer servicio</a></li>';
+							echo '    <li><a href="#" onclick="misServicios()">Mis servicios</a></li>';
+							echo '    <li><a href="#" onclick="listarServiciosPendientesTecnico()">Servicios pendientes</a></li>';
+						}
+						if (strcmp($usr[2] , "usuario_cliente") == 0){
+							echo '    <li><a href="#" onclick="listarServiciosPendientesCliente()">Servicios pendientes</a></li>';
+						}
+						echo '    <li><a href="#">Mi perfil</a></li>';
 						echo '    <li><a href="#">Ver mapa</a></li>';
 						echo '    <li class="divider"></li>';
 						echo '    <li><a href="#" onclick="logOff()">Salir</a></li>';

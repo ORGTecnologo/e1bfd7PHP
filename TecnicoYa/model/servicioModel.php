@@ -139,12 +139,14 @@ class servicioModel {
             array_push($errs, 'servicio_no_existente');
         }
 
+        //$nowStr = 
         if (empty($respuesta)) {
             $insertData = array(
                 'fk_cliente' => $_SESSION["usuario"][1],
                 'fk_servicio' => $idServicio,
-                'fk_tecnico' => $serv['fk_tecnico'],
+                'fk_tecnico' => $usr,
                 'precio_final_servicio' => $serv['precio_servicio'],
+                'fecha_hora_contrato' => (new DateTime('now'))->format('Y-m-d H:i')
             );
             $id_insertado = $db->insert('tbl_cliente_contrata_servicio', $insertData);
             if ($id_insertado !== false)
@@ -177,6 +179,25 @@ class servicioModel {
         $resp = $db->servicios_eliminarServicioOfrecido($tecnico,$idServicio);
         return $resp;
     }
+
+    function obtenerServiciosPendientesTecnico($tecnico,$estado) {
+        require_once('database/MysqliDb.php');
+        $resp = array();
+        $db = MysqliDb::getInstance();
+        $resp = $db->servicios_pendientesDeTecnico($tecnico,$estado);
+        return $resp;
+    }
+
+    function obtenerServiciosPendientesCliente($cliente,$estado) {
+        require_once('database/MysqliDb.php');
+        $resp = array();
+        $db = MysqliDb::getInstance();
+        $resp = $db->servicios_pendientesDeCliente($cliente,$estado);
+        return $resp;
+    }
+
+
+
 
 }
 ?>
