@@ -179,3 +179,17 @@ function verModales(id){
 function setRegistroTipo(tipo){
 	varsProy.tipoRegistro = tipo;
 }
+
+
+function contratarServicio(mailUsr,idServicio,tecnico){
+
+	if (confirm("Esta seguro que desea contratar este servicio?")){
+		console.log("Confirmo");
+		confirmarcontratarServicio(mailUsr,idServicio,tecnico);
+	}
+	else{
+		console.log("Cancelo");
+		return false;
+	}
+
+}

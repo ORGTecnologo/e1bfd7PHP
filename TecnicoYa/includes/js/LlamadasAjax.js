@@ -92,6 +92,38 @@ function altaServicio(nombre, descripcion) {
     })
 }
 
+function confirmarcontratarServicio(mail,idServicio,tecnico){
+
+    $.ajax({
+        url: ip + '/?rt=services',
+        type: 'POST',
+        data: JSON.stringify({
+            mail: mail,
+            idServicio: idServicio,
+            tecnico: tecnico,
+            operation: 'contratarServicio'
+        }),
+        datatype: "json",
+        contentType: "application/json",
+    })
+    .done(function(msg) {
+        //var msg = JSON.parse(msg);
+        console.log(msg);
+        if (msg.resultado == "OK"){
+            alertify.success("Servicio registrado correctamente");
+            //gestionServicios();
+        }
+        else{
+            alertify.error("Error al registrar servicio");
+            console.log('EXITO, SERVIDOR RESPONDE:  ' + msg);
+        }
+    })
+    .fail(function(msg) {
+        console.log('FALLO, SERVIDOR RESPONDE:  ' + msg);
+        alert("Houston, tenemos un problema!!!");
+    })
+}
+
 function obtenerTodosLosPaises(){
     /*
     metodo: GET

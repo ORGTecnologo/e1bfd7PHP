@@ -651,6 +651,21 @@ class MysqliDb {
         return $result->fetch_assoc();
     }
 
+    public function serviciosdeTecnico_getById($id){
+        $mysqli = $this->getConnection();                
+        $statement = $mysqli->prepare("
+            select fk_tecnico,precio_servicio from tbl_tecnico_ofrece_servicio where fk_servicio=? 
+        ");
+        if ($statement === false) {
+            trigger_error("[servicio_findByName] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('i',$id);
+        $statement->execute();
+        $result = $statement->get_result();        
+        return $result->fetch_assoc();
+    }
+
+
     public function servicios_updateServicio($id,$nombre,$descripcion) {
         $mysqli = $this->getConnection();
                 

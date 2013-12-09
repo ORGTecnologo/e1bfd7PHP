@@ -84,5 +84,42 @@ class servicioModel {
         return $servicios;
     }
 
+    public function contratarServicio($usr, $idServicio, $tecnico) {
+
+        $respuesta = array();
+        $errs = array();
+
+
+        if (empty($usr))
+            array_push($errs, 'usr_requerido');
+        if (empty($idServicio))
+            array_push($errs, 'idServicio_requerido');
+
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+
+        $serv = $db->serviciosdeTecnico_getById($idServicio);
+        if ($serv == false) {
+            array_push($errs, 'servicio_no_existente');
+        }
+
+        if (empty($respuesta)) {
+            $insertData = array(
+                'fk_cliente' => $usr,
+                'fk_servicio' => $idServicio,
+                'fk_tecnico' => $serv['fk_tecnico'],
+                'precio_final_servicio' => $serv['precio_servicio'],
+            );
+            $id_insertado = $db->insert('tbl_cliente_contrata_servicio', $insertData);
+            if ($id_insertado !== false)
+                $respuesta['resultado'] = 'OK';
+            else
+                $respuesta['resultado'] = 'FALLA';
+        }
+        if (strcmp($respuesta['resultado'], 'FALLA'))
+            $respuesta['errores'] = $errs;
+
+        return $respuesta;
+    }
 }
 ?>

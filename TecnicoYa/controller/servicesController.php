@@ -120,6 +120,11 @@ class RestService {
                 $servicioModel = new servicioModel;
                 $result = $servicioModel->altaServicio($arguments["nombres"],$arguments["descripcion"]);
                 break;
+            case 'contratarServicio':
+                include __SITE_PATH . '/model/' . 'servicioModel.php';
+                $servicioModel = new servicioModel;
+                $result = $servicioModel->contratarServicio($arguments["mail"],$arguments["idServicio"],$arguments["tecnico"]);                
+                break;
         }
         echo $result;
     }
@@ -154,7 +159,6 @@ class servicesController extends baseController {
         $service = new RestService($this->operacionesAdmitidas);
         $service->handleRawRequest($_SERVER, $_GET, $_POST);
     }
-
 }
 
 ?>
