@@ -95,8 +95,10 @@ class MysqliDb {
      * @return object Returns the current instance.
      */
     public static function getInstance() {
-        if (self::$_instance == null)
-            self::$_instance = new MysqliDb('127.0.0.1', 'root', 'alfalfa', 'tecnico_ya_database');
+        if (self::$_instance == null){
+            //self::$_instance = new MysqliDb('127.0.0.1', 'root', 'alfalfa', 'tecnico_ya_database');
+            self::$_instance = new MysqliDb('localhost', 'root', 'ms_admin', 'tecnico_ya_database');
+        }
         return self::$_instance;
     }
 

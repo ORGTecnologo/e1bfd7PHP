@@ -5,12 +5,9 @@
 <link rel="stylesheet" type="text/css" href="includes/css/alertify.default.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/datepicker.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="includes/css/tecnico-ya.css" media="screen" />
-<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap-select.css" media="screen" />
-=======
 <link rel="stylesheet" type="text/css" href="includes/css/themeProy.css" media="screen" />
 
->>>>>>> 006e9044ccbb58e6c11194698b90b1ff271ae260
 <script src="includes/js/jquery.min.js"></script>
 <script src="includes/js/LlamadasAjax.js"></script>
 <body style="background-color: gainsboro;">
