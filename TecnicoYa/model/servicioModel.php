@@ -109,8 +109,6 @@ class servicioModel {
                 $respuesta['resultado'] = 'OK';
             else
                 $respuesta['resultado'] = 'FALLA';
-
-
         } else {
             $respuesta['resultado'] = 'FALLA';
         }
@@ -121,9 +119,42 @@ class servicioModel {
         }
 
         return $respuesta;
-
     }
 
+    public function contratarServicio($usr, $idServicio, $tecnico) {
+
+        $respuesta = array();
+        $errs = array();
+
+        if (empty($usr))
+            array_push($errs, 'usr_requerido');
+        if (empty($idServicio))
+            array_push($errs, 'idServicio_requerido');
+
+        require_once('database/MysqliDb.php');
+        $db = MysqliDb::getInstance();  
+
+        $serv = $db->serviciosdeTecnico_getById($idServicio);
+        if ($serv == false) {
+            array_push($errs, 'servicio_no_existente');
+        }
+
+        if (empty($respuesta)) {
+            $insertData = array(
+                'fk_cliente' => $_SESSION["usuario"][1],
+                'fk_servicio' => $idServicio,
+                'fk_tecnico' => $serv['fk_tecnico'],
+                'precio_final_servicio' => $serv['precio_servicio'],
+            );
+            $id_insertado = $db->insert('tbl_cliente_contrata_servicio', $insertData);
+
+        }
+        if (strcmp($respuesta['resultado'], 'FALLA'))
+            $respuesta['errores'] = $errs;
+
+        return $respuesta['resultado'];
+    }
+       
     function esServicioYaOfrecido($tecnico,$idServicio){
         require_once('database/MysqliDb.php');
         $resp = array();
@@ -143,7 +174,6 @@ class servicioModel {
         $resp = $db->servicios_eliminarServicioOfrecido($tecnico,$idServicio);
         return $resp;
     }
-
 
 }
 ?>

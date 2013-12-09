@@ -92,6 +92,36 @@ function altaServicio(nombre, descripcion) {
     })
 }
 
+function confirmarcontratarServicio(mail,idServicio,tecnico){
+
+    //el mail es el del tecnico OJO
+    $.ajax({
+        url: ip + '/?rt=services',
+        type: 'POST',
+        data: JSON.stringify({
+            mail: mail,
+            idServicio: idServicio,
+            tecnico: tecnico,
+            operation: 'contratarServicio'
+        }),
+        datatype: "json",
+        contentType: "application/json",
+    })
+    .done(function(msg) {
+        console.log(msg);
+        if (msg.contains('OK')){
+            alertify.success("Servicio contradado correctamente, el tecnico se pondra en contacto con ud a la brevedad!!");
+        }
+        else{
+            alertify.error("Error al registrar servicio");
+        }
+    })
+    .fail(function(msg) {
+        console.log('FALLO, SERVIDOR RESPONDE:  ' + msg);
+        alert("Houston, tenemos un problema!!!");
+    })
+}
+
 function obtenerTodosLosPaises(){
     /*
     metodo: GET
