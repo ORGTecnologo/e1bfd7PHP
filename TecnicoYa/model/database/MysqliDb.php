@@ -714,17 +714,22 @@ class MysqliDb {
         return $servs;
     }
 
-    public function servicios_obtenerTodosOfrecidos(){
+    public function servicios_obtenerTodosOfrecidos($tipoServicio,$likeTecnico){
         $mysqli = $this->getConnection();
-                
-        $statement = $mysqli->prepare("
-            select * 
+
+        $queryBase =" select * 
             from (tbl_usuarios t join tbl_tecnico_ofrece_servicio ts on t.email = ts.fk_tecnico) 
-            join tbl_servicios s on (s.id_servicio = ts.fk_servicio)
-        ");
+            join tbl_servicios s on (s.id_servicio = ts.fk_servicio) ";
+
+        if (strcmp($tipoServicio, "todos") !== 0){
+            $queryBase .= " where s.id_servicio = " . $tipoServicio;
+        }
+                
+        $statement = $mysqli->prepare($queryBase);
         if ($statement === false) {
             trigger_error("[servicios_obtenerTodosOfrecidos] - Error en sentencia sql", E_USER_ERROR);
         }
+
         $statement->execute();
         $result = $statement->get_result();
         $servs = array();

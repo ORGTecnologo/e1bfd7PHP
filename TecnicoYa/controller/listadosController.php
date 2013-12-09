@@ -40,7 +40,7 @@
 		public function otenerTodosServiciosPublicados(){
 			include __SITE_PATH . '/model/' . 'servicioModel.php';
 			$servicioModel = new servicioModel;
-			$servicios = $servicioModel->obtenerServiciosOfrecidos();
+			$servicios = $servicioModel->obtenerServiciosOfrecidos($_GET["tipoServicio"],$_GET["likeServicio"]);
 			$this->registry->template->lista_servicios = $servicios;
 
 			$this->registry->template->show('listado_servicios_publicados');	

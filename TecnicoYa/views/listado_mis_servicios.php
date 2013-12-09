@@ -9,7 +9,7 @@
 			<th>Servicio</th>
 			<th>Precio fijado</th>
 			<th>
-				<a class="loadOnFrontEndWrapper pull-right" href="#" onclick="ofrecerNuevoServicio()">
+				<a class="pull-right" href="#" onclick="ofrecerNuevoServicio()">
 					<span class="glyphicon glyphicon-plus"></span>   Nuevo Servicio
 				</a>	
 			</th>

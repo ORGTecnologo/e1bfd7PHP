@@ -77,10 +77,10 @@ class servicioModel {
         return $servicios;
     }
 
-    public function obtenerServiciosOfrecidos(){
+    public function obtenerServiciosOfrecidos($tipoServicio,$likeTecnico){
         require_once('database/MysqliDb.php');
         $db = MysqliDb::getInstance();
-        $servicios = $db->servicios_obtenerTodosOfrecidos();
+        $servicios = $db->servicios_obtenerTodosOfrecidos($tipoServicio,$likeTecnico);
         return $servicios;
     }
 
@@ -147,7 +147,10 @@ class servicioModel {
                 'precio_final_servicio' => $serv['precio_servicio'],
             );
             $id_insertado = $db->insert('tbl_cliente_contrata_servicio', $insertData);
-
+            if ($id_insertado !== false)
+                $respuesta['resultado'] = 'OK';
+            else
+                $respuesta['resultado'] = 'FALLA';
         }
         if (strcmp($respuesta['resultado'], 'FALLA'))
             $respuesta['errores'] = $errs;

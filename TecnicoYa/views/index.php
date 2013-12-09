@@ -10,6 +10,7 @@
 
 <script src="includes/js/jquery.min.js"></script>
 <script src="includes/js/LlamadasAjax.js"></script>
+<script src="includes/js/init.js"></script>
 <body style="background-color: gainsboro;">
 	<head>
     <title>Tecnico Ya!</title>
@@ -35,8 +36,10 @@
 		<div class="form-group col-xs-6">
 			<input id="input-busqueda" type="search" class="form-control input-md" placeholder="Buscar" style="height: initial;min-width: 25em;">
 		</div>
+		<select id="cmbFiltroTipoServicio" class="selectpicker">
+		</select>
 		<ul class="btn-group">
-			<button onclick="" class="btn btn-primary" style="margin-top: initial;">
+		<button onclick="listadoServiciosPublicados()" class="btn btn-primary" style="margin-top: initial;">
 				<span class="glyphicon glyphicon-search"></span> Buscar</button>
 		</ul>
 	</ul>
@@ -77,9 +80,11 @@
 				echo 	'$("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=index/mensajeOperacion&mensaje=' . str_replace(" " , "+" , $mensaje) . '&operacion=' . $operacion . '")';
 				echo '</script>';
 			}
-		} else {
+		} else {		
+			echo '<script>loadComboFiltroTipoServicio();</script>';	
 			echo '<script>listadoServiciosPublicados()</script>';
 		}
+		
 	?>
 </body>
 

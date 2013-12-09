@@ -196,6 +196,21 @@ function esServicioYaOfrecido(idServicio){
     })
 }
 
+function loadComboFiltroTipoServicio(){
+    $.ajax({
+        url: '/e1bfd7PHP/TecnicoYa/?rt=services&operation=getTodosServicios',
+        type: 'GET',
+        datatype: "application/json",
+    })
+    .done(function(msg) {
+        var msg = JSON.parse(msg);
+        updateComboFiltroTipoServicio(msg);
+    })
+    .fail(function(msg) {
+        console.log(msg);
+    })
+}
+
 
 /* ACCIONES DEL MENÚ DE ADMINSITRACIÓN */
 
@@ -222,10 +237,13 @@ function altaUsuario(){
 
 function listadoServiciosPublicados(){
 
-    var tipoServicio = 1;
-    var likeServicio = "algo";
-    var url = "/e1bfd7PHP/TecnicoYa/?rt=listados/otenerTodosServiciosPublicados&tipoServicio=" + tipoServicio + "&likeServicio=" + likeServicio;
+    var tipoServicio = $("#cmbFiltroTipoServicio").val();
+    if (tipoServicio == undefined)
+        tipoServicio = "todos";
 
+    var likeServicio = $("#input-busqueda").val();
+    var url = "/e1bfd7PHP/TecnicoYa/?rt=listados/otenerTodosServiciosPublicados&tipoServicio=" + tipoServicio + "&likeServicio=" + likeServicio;
+    console.log(url);
     $("#wrapperFrontEnd").load(url);    
 }
 
