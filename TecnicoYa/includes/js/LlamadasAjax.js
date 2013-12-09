@@ -184,6 +184,10 @@ function misServicios(){
     $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=usuario/verMisServicios");       
 }
 
+function ofrecerNuevoServicio(){
+    $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=usuario/ofrecerNuevoServicio");       
+}
+
 function contratarServicio(tecnico,idServicio){
     console.log("tecnico: " + tecnico);
     console.log("idServicio: " + idServicio);
@@ -193,3 +197,4 @@ function verMasDeServicioOfrecido(tecnico,idServicio){
     console.log("tecnico: " + tecnico);
     console.log("idServicio: " + idServicio);
 }
+

@@ -81,14 +81,31 @@
         			$this->registry->template->direccion = "";
         			$this->registry->template->tipoUsuario = "";
         			$this->registry->template->contrasenia = "";
-				$this->registry->template->show('registro_usuario');						
+					$this->registry->template->show('registro_usuario');						
 			}
 		}
 		
 
 		public function verMisServicios(){
-			
-			
+			include __SITE_PATH . '/model/' . 'servicioModel.php';
+			$servicioModel = new servicioModel;
+			$tecnico = $_SESSION["usuario"][1];
+			$servicios = $servicioModel->obtenerServiciosDeTecnico($tecnico);		
+			$this->registry->template->lista_servicios = $servicios;
+			$this->registry->template->show('listado_mis_servicios');
+		}
+
+		public function ofrecerNuevoServicio(){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+
+			} else {
+				include __SITE_PATH . '/model/' . 'servicioModel.php';
+				$servicioModel = new servicioModel;
+				$servicios = $servicioModel->obtenerTodosServicios();
+				$this->registry->template->lista_servicios = $servicios;				
+				$this->registry->template->show('ofrecer_nuevo_servicio');
+			}
 		}
 	
 	}
