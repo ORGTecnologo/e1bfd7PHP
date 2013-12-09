@@ -99,6 +99,11 @@ class RestService {
                 $usuarioModel = new usuarioModel;
                 $resp = $usuarioModel->obtenerInfoDeUsuario($arguments["email"]);
                 echo json_encode($resp);
+            case 'esServicioYaOfrecido':
+                include __SITE_PATH . '/model/' . 'servicioModel.php';
+                $servicioModel = new servicioModel;
+                $resp = $servicioModel->esServicioYaOfrecido($_SESSION["usuario"][1],$arguments["idServicio"]);
+                echo json_encode($resp);
         }
     }
 

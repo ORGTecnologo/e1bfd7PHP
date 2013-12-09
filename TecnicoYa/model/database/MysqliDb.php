@@ -96,8 +96,8 @@ class MysqliDb {
      */
     public static function getInstance() {
         if (self::$_instance == null){
-            self::$_instance = new MysqliDb('127.0.0.1', 'root', 'alfalfa', 'tecnico_ya_database');
-            //self::$_instance = new MysqliDb('localhost', 'root', 'ms_admin', 'tecnico_ya_database');
+            //self::$_instance = new MysqliDb('127.0.0.1', 'root', 'alfalfa', 'tecnico_ya_database');
+            self::$_instance = new MysqliDb('localhost', 'root', 'ms_admin', 'tecnico_ya_database');
         }
         return self::$_instance;
     }
@@ -736,6 +736,19 @@ class MysqliDb {
             array_push($servs , $row);
         }
         return (empty($servs) ? false : $servs);
+    }
+
+    public function servicios_eliminarServicioOfrecido($tecnico,$idServicio) {
+        $mysqli = $this->getConnection();
+                
+        $statement = $mysqli->prepare("
+            delete from tbl_tecnico_ofrece_servicio where fk_servicio = ? and fk_tecnico = ?
+        ");
+        if ($statement === false) {
+            trigger_error("[servicios_updateServicio] - Error en sentencia sql", E_USER_ERROR);
+        }
+        $statement->bind_param('is',$idServicio,$tecnico);
+        return ($statement->execute());        
     }
 
     public function paises_getTodos() {

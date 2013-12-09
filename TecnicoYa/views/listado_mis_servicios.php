@@ -9,7 +9,7 @@
 			<th>Servicio</th>
 			<th>Precio fijado</th>
 			<th>
-				<a class="loadOnAdminWrapper pull-right" href="/e1bfd7PHP/TecnicoYa/?rt=usuario/ofrecerNuevoServicio">
+				<a class="loadOnFrontEndWrapper pull-right" href="#" onclick="ofrecerNuevoServicio()">
 					<span class="glyphicon glyphicon-plus"></span>   Nuevo Servicio
 				</a>	
 			</th>
@@ -21,10 +21,10 @@
 			//var_dump($srvs);
 			foreach ($srvs as &$valor) {
 				echo 	'<tr>';
-				echo		'<td><img src="' . $valor[4] . '" height=40/></td>';
+				echo		'<td><img src="' . $valor[4] . '" height=40 /></td>';
 				echo		'<td>' . $valor[6] . '</td>';
 				echo		'<td>$' . $valor[3] . '</td>';
-				echo		'<td><a class="loadOnAdminWrapper" href="/e1bfd7PHP/TecnicoYa/?rt=usuario/bajaDeServicio">Eliminar</a></td>';
+				echo		'<td><a class="loadOnFrontEndWrapper" href="/e1bfd7PHP/TecnicoYa/?rt=usuario/bajaDeServicio&id=' . $valor[5] . '&nombre=' . str_replace(" " , "+" , $valor[6]) . '">Eliminar</a></td>';
 				echo	'</tr>';
 			}
 		?>

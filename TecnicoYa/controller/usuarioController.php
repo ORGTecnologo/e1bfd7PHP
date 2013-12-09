@@ -110,12 +110,10 @@
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {				
 
 				$urlFoto = "includes/img_data/";
-				$nombreFoto = "sin_foto.jpg";
-				if($_FILES['foto']['name']){
-					$nombreFoto = $this->generateRandomString();
-					$urlFoto .= $nombreFoto . ".jpg";
-					move_uploaded_file($_FILES['foto']['tmp_name'], $urlFoto);
-				}
+				$nombreFoto = "sin_foto";
+				if($_FILES['foto']['name'])
+					$nombreFoto = $this->generateRandomString();										
+				$urlFoto .= $nombreFoto . ".jpg";
 				$tecnico = $_SESSION["usuario"][1];
 				$result = $servicioModel->ofrecerNuevoServicio($_POST["idServicio"], $_POST["precio"], $urlFoto, $tecnico);
 				if (strcmp($result["resultado"], "FALLA") == 0 ){
@@ -124,6 +122,9 @@
 					$this->registry->template->error = $result['errores'][0];
 					$this->registry->template->show('ofrecer_nuevo_servicio');
 				} else {
+					if($_FILES['foto']['name']){
+						move_uploaded_file($_FILES['foto']['tmp_name'], $urlFoto);
+					}
 					$this->registry->template->nextAccion = "mensaje_operacion";
 					$this->registry->template->mensaje = "Servicio publicado con éxito";
 					$this->registry->template->operacion = "misServicios()";
@@ -133,6 +134,25 @@
 				$servicios = $servicioModel->obtenerTodosServicios();
 				$this->registry->template->lista_servicios = $servicios;				
 				$this->registry->template->show('ofrecer_nuevo_servicio');
+			}
+		}
+
+		public function bajaDeServicio(){
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {	
+				include __SITE_PATH . '/model/' . 'servicioModel.php';
+				$servicioModel = new servicioModel;
+
+				$servicioModel->eliminarServicioOfrecido($_SESSION["usuario"][1],$_POST["id"]);
+
+				$this->registry->template->nextAccion = "mensaje_operacion";
+				$this->registry->template->mensaje = "Servicio dado de baja con éxito";
+				$this->registry->template->operacion = "misServicios()";
+				$this->registry->template->show('index');
+
+			} else {
+				$this->registry->template->nombre = $_GET["nombre"];
+				$this->registry->template->id = $_GET["id"];
+				$this->registry->template->show('baja_de_servicio');
 			}
 		}
 	

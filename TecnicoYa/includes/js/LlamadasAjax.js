@@ -147,6 +147,25 @@ function obtenerLocalidadesPorDepto(){
     */
 }
 
+function esServicioYaOfrecido(idServicio){
+    $.ajax({
+        url: '/e1bfd7PHP/TecnicoYa/?rt=services&operation=esServicioYaOfrecido&idServicio=' + idServicio,
+        type: 'GET',
+        datatype: "application/json",
+    })
+    .done(function(msg) {
+        var msg = JSON.parse(msg);
+        $("#mjeServYaOfrec").empty();
+        if (msg.ofrecido == "TRUE")
+            $("#mjeServYaOfrec").append("<p style='color:red;'>Servicio ya ofrecido</p>");
+        else 
+            $("#mjeServYaOfrec").append("<p>Nuevo servicio</p>");
+    })
+    .fail(function(msg) {
+        console.log(msg);
+    })
+}
+
 
 /* ACCIONES DEL MENÚ DE ADMINSITRACIÓN */
 

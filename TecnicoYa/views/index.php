@@ -91,3 +91,4 @@
 <script src="includes/js/objetos.js"></script>
 <script src="includes/js/bootstrap-select.js"></script>
 <script src="includes/js/tecnico-ya.js"></script>
+<script src="includes/js/bootstrap-select.min.js"></script>

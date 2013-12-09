@@ -124,6 +124,26 @@ class servicioModel {
 
     }
 
+    function esServicioYaOfrecido($tecnico,$idServicio){
+        require_once('database/MysqliDb.php');
+        $resp = array();
+        $db = MysqliDb::getInstance();
+        $servicios = $db->servicios_ofrecidoPorUsuarioYServicio($tecnico,$idServicio);
+        if ($servicios !== false)
+            $resp["ofrecido"] = "TRUE";
+        else 
+            $resp["ofrecido"] = "FALSE";
+        return $resp;        
+    }
+
+    function eliminarServicioOfrecido($tecnico,$idServicio) {
+        require_once('database/MysqliDb.php');
+        $resp = array();
+        $db = MysqliDb::getInstance();
+        $resp = $db->servicios_eliminarServicioOfrecido($tecnico,$idServicio);
+        return $resp;
+    }
+
 
 }
 ?>
