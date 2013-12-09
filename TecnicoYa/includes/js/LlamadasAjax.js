@@ -247,6 +247,11 @@ function verPerfil(){
     $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=usuario/perfilUsuario");    
 }
 
+function verMapa(){
+    $("#wrapperFrontEnd").load("/e1bfd7PHP/TecnicoYa/?rt=usuario/verMapaServicios");    
+}
+
+
 function listadoServiciosPublicados(){
 
     var tipoServicio = $("#cmbFiltroTipoServicio").val();

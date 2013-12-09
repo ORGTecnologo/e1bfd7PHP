@@ -92,8 +92,15 @@
 			$this->registry->template->usr = $usr;
 			$this->registry->template->show('perfil');
 		}
-		
 
+		public function verMapaServicios(){
+			include __SITE_PATH . '/model/' . 'usuarioModel.php';
+        	$usuarioModel = new usuarioModel;
+			$usr = $usuarioModel->obtenerInfoDeUsuario($_SESSION["usuario"][1]);
+			$this->registry->template->usr = $usr;
+			$this->registry->template->show('mapa');
+		}
+		
 		public function verMisServicios(){
 			include __SITE_PATH . '/model/' . 'servicioModel.php';
 			$servicioModel = new servicioModel;
