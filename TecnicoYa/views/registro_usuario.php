@@ -8,69 +8,68 @@
 <script src="includes/js/jquery.min.js"></script>
 <body>
 	<head>
-		<meta charset="UTF-8">
-		<title>Tecnico Ya!</title>
+    <title>Tecnico Ya!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta name="description" content="Bienvenidos al Tecnico Ya, donde ecnotraras todo lo que te imagines y mas.">
 	</head>
-	<div class="container">
-	<nav class="navbar navbar-default " role="navigation">
-		<!-- El logotipo y el icono que despliega el menú se agrupan
-		para mostrarlos mejor en los dispositivos móviles -->
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
+
+<!-- BARRA DE NAVEGACION -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse"
 			data-target=".navbar-ex1-collapse">
 			<span class="sr-only">Desplegar navegación</span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="/e1bfd7PHP/TecnicoYa/?rt=index/index">Tecnico Ya</a>
+		</button>
+		<a class="navbar-brand" href="/e1bfd7PHP/TecnicoYa/?rt=index/index">Tecnico Ya</a>
+	</div>
+  <div class="collapse navbar-collapse navbar-ex1-collapse"> 
+    <ul class="navbar-form navbar-left" role="search">
+		<div class="form-group col-xs-6">
+			<input id="input-busqueda" type="search" class="form-control input-md" placeholder="Buscar" style="height: initial;min-width: 25em;">
 		</div>
-		<!-- Agrupar los enlaces de navegación, los formularios y cualquier
-		otro elemento que se pueda ocultar al minimizar la barra -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-					<input type="search" class="form-control" placeholder="Buscar">
-				</div>
-				<button class="btn btn-primary barraBusquedaHome" style="margin-top: initial;">
+		<ul class="btn-group">
+			<button onclick="" class="btn btn-primary" style="margin-top: initial;">
 				<span class="glyphicon glyphicon-search"></span> Buscar</button>
-			</form>
-			<div class="col-md-1">
-				<a href="#" class="btn btn-primary barraBusquedaHome" role="button" data-toggle="dropdown">Opciones</a>
-				<ul class="dropdown-menu col-md-3 ">
-					<li class="nav-header">Tecnicos</li>
-					<li class="active"><a href="#">Inicio</a></li>
-					<li><a href="#">Novedades</a></li>
-					<li><a href="#">Top Ventas</a></li>
-					<li><a href="#">Top Gratis</a></li>
-					<li class="divider"></li>
-					<li class="nav-header">Opciones</li>
-					<li><a href="#">Perfil</a></li>
-					<li><a href="#">Mis aplicaciones</a></li>
-				</ul>
-			</div>
-			
-			<div class="col-md-4 pull-right">                
+		</ul>
+	</ul>
+    <ul class="nav navbar-nav navbar-right" id="Login-Registro-Div">
 				<?php
 					if (!isset($_SESSION["autenticado"]) || !$_SESSION["autenticado"]){
 						echo "<a href='/e1bfd7PHP/TecnicoYa/?rt=usuario/registroUsuario'><button class='btn btn-primary barraBusquedaHome'>Registrarme</button></a>";
 						echo "<a href='/e1bfd7PHP/TecnicoYa/?rt=usuario/login'><button class='btn btn-primary barraBusquedaHome'>Login</button></a>";
 					} else {
 						$usr = $_SESSION["usuario"];
-						echo 'Hola ' . $usr[0] . '!(' . '<a href="/e1bfd7PHP/TecnicoYa/?rt=usuario/logout">Salir</a>' . ')';
+
+						echo '<div class="btn-group">';
+						echo '  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="margin-top: 0.5em;">';
+						echo    $usr[0] . ' <span class="caret"></span>';
+					  	echo '	</button>';						 
+						echo '  <ul class="dropdown-menu" role="menu">';
+						echo '    <li><a href="#" onclick="registrarmeEnServicio()">Ofrecer servicio</a></li>';
+						echo '    <li><a href="#" onclick="misServicios()">Mis servicios</a></li>';
+						echo '    <li><a href="#">Ver mapa</a></li>';
+						echo '    <li class="divider"></li>';
+						echo '    <li><a href="#" onclick="logOff()">Salir</a></li>';
+						echo '  </ul>';
+						echo '</div>';
 					}
 				?>
-			</div>
-		</div>
-	</nav>
-	<div id="wrapperFrontEnd">
+	</ul>
+	</div>
+</nav>
+
+<div class="container" id="wrapperFrontEnd" style="margin-top:50px">
 <div class="container">
 	<div class="col-md-12">
 
 	</div>
 	<div class="col-md-12">
 		<form action="/e1bfd7PHP/TecnicoYa/" method="post">
-			<div id="registroUsuario"style="overflow-y: auto;	display: block;margin-left: auto;margin-right: auto;">
+			<div id="registroUsuario"style="overflow-y: auto;	display: block;margin-left: auto;margin-right: auto;background-color: beige;">
 				<div class="modal-header">
 					<h3>Registro de usuario</h3>
 				</div>

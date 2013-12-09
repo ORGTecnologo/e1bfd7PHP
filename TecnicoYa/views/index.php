@@ -40,7 +40,6 @@
 		</ul>
 	</ul>
     <ul class="nav navbar-nav navbar-right" id="Login-Registro-Div">
-		 <div class="col-md-offset-1 col-md-3">               
 				<?php
 					if (!isset($_SESSION["autenticado"]) || !$_SESSION["autenticado"]){
 						echo "<a href='/e1bfd7PHP/TecnicoYa/?rt=usuario/registroUsuario'><button class='btn btn-primary barraBusquedaHome'>Registrarme</button></a>";
@@ -49,7 +48,7 @@
 						$usr = $_SESSION["usuario"];
 
 						echo '<div class="btn-group">';
-						echo '  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">';
+						echo '  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="margin-top: 0.5em;">';
 						echo    $usr[0] . ' <span class="caret"></span>';
 					  	echo '	</button>';						 
 						echo '  <ul class="dropdown-menu" role="menu">';
@@ -62,12 +61,11 @@
 						echo '</div>';
 					}
 				?>
-			</div>
-		</div>
 	</ul>
+	</div>
 </nav>
 
-	<div class="row" id="wrapperFrontEnd" style="margin-top:50px">
+	<div class="container" id="wrapperFrontEnd" style="margin-top:50px">
 
 
 	</div>
